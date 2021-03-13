@@ -1,30 +1,27 @@
-using ControlDeColegio.Models;
+using System;
 using System.ComponentModel;
-using System.Collections.ObjectModel;
-
+using System.Windows.Input;
 
 namespace ControlDeColegio.ModelView
 {
-    public class UsuarioViewModel : INotifyPropertyChanged
+    public class UsuarioViewModel : INotifyPropertyChanged, ICommand
     {
+        public UsuarioViewModel Instancia {get; set;}
         public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<Usuarios> usuarios {get; set;}
-        
+        public event EventHandler CanExecuteChanged;
+
         public UsuarioViewModel()
         {
-            this.usuarios = new ObservableCollection<Usuarios>();
-            this.usuarios.Add(new Usuarios(1,"etumax", true, "Edwin Rolando", "Tumax Chaclan", "etumax@gmail.com"));
-            this.usuarios.Add(new Usuarios(2,"nperez", true, "Nancy Elizabeth", "Perez Carcamo", "nperez@gmail.com"));
-            this.usuarios.Add(new Usuarios(3,"caquino", true, "Cesar Agusto", "Aquino Gaitan", "caquino@gmail.com"));
-        }   
-
-        public void NotificarCambio(string propiedad)
+            this.Instancia = this;
+        }
+        public bool CanExecute(object parametros)
         {
-            if(PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propiedad));
-            }
+            return true;
         }
 
+        public void Execute(object parametros)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
