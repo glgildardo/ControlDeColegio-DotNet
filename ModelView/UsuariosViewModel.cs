@@ -47,7 +47,7 @@ namespace ControlDeColegio.ModelView
         public void Execute(object parametro)
         {
             if(parametro.Equals("Nuevo")){
-                UsuarioView nuevoUsuario = new UsuarioView();
+                UsuarioView nuevoUsuario = new UsuarioView(Instancia);
                 nuevoUsuario.Show();
             }else if (parametro.Equals("Eliminar")){
                 if(this.Seleccionado == null){

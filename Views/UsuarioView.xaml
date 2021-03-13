@@ -21,19 +21,19 @@
         </Grid.ColumnDefinitions>
         
         <Label Content = "Apellidos" Grid.Row = "0" Grid.Column = "0"/>
-        <TextBox Grid.Row = "0" Grid.Column = "1"/>
+        <TextBox Grid.Row = "0" Grid.Column = "1" Text = "{Binding Apellidos}"/>
         
         <Label Content = "Nombres" Grid.Row = "1" Grid.Column = "0"/>
-        <TextBox Grid.Row = "1" Grid.Column = "1"/>
+        <TextBox Grid.Row = "1" Grid.Column = "1" Text = "{Binding Nombres}"/>
         
         <Label Content = "Email" Grid.Row = "2" Grid.Column = "0"/>
-        <TextBox Grid.Row = "2" Grid.Column = "1"/>
+        <TextBox Grid.Row = "2" Grid.Column = "1" Text = "{Binding Email}"/>
         
         <Label Content = "Username" Grid.Row = "3" Grid.Column = "0"/>
-        <TextBox Grid.Row = "3" Grid.Column = "1"/>
+        <TextBox Grid.Row = "3" Grid.Column = "1" Text = "{Binding Username}"/>
        
         <Label Content = "Password" Grid.Row = "4" Grid.Column = "0"/>
-        <TextBox Grid.Row = "4" Grid.Column = "1"/>
+        <PasswordBox Grid.Row = "4" Grid.Column = "1"/>
         
         <StackPanel Grid.Row = "5" Grid.Column = "0" Orientation = "Vertical">
             <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="Guardar"/>

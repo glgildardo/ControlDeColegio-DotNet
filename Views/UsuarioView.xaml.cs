@@ -1,14 +1,16 @@
 using System.Windows;
+using ControlDeColegio.ModelView;
 
 namespace ControlDeColegio.Views
 {
     public partial class UsuarioView : Window
     {
-        public UsuarioView()
+        public UsuarioView(UsuariosViewModel UsuariosViewModel)
         {
             InitializeComponent();
-            // UsuarioView model =  new UsuarioView();
-            // this.DataContext = model;
+            UsuarioViewModel model =  new UsuarioViewModel(UsuariosViewModel);
+            this.DataContext = model;
+            
         }
     }
 }
