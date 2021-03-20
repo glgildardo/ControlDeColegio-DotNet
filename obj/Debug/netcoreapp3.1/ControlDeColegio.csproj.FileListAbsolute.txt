@@ -23,3 +23,12 @@ C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\View
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\RolView.baml
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\UsuarioView.g.cs
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\UsuarioView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\RolFormView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\RolFormView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\bin\Debug\netcoreapp3.1\ControlzEx.dll
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\bin\Debug\netcoreapp3.1\MahApps.Metro.dll
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\bin\Debug\netcoreapp3.1\de\MahApps.Metro.resources.dll
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\ControlDeColegio.csproj.CopyComplete

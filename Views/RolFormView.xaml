@@ -1,0 +1,30 @@
+<mah:MetroWindow x:Class="ControlDeColegio.Views.RolFormView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:ControlDeColegio"
+        mc:Ignorable="d"
+        Title="Formulario de Roles" Height="450" Width="800" WindowStartupLocation = "CenterScreen" Name="FormularioRol">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content = "Rol Name" Grid.Row = "0" Grid.Column = "0"/>
+        <TextBox Grid.Row = "0" Grid.Column = "1" Text = "{Binding Nombre}"/>
+        
+        <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
+            <Button Grid.Row = "1" Grid.Column = "0" Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="Guardar"/>
+            <Button Grid.Row = "1" Grid.Column = "0" Content="Cancelar" Command = "{Binding Instancia}" CommandParameter ="Cancelar"/>
+        </StackPanel>
+
+        
+    </Grid>
+</mah:MetroWindow>

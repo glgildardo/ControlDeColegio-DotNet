@@ -1,12 +1,17 @@
-<Window x:Class="ControlDeColegio.Views.RolView"
+<mah:MetroWindow x:Class="ControlDeColegio.Views.RolView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:ControlDeColegio"
         mc:Ignorable="d"
         Title="Lista de Roles" Height="450" Width="800">
     <Grid>
-        <DataGrid ItemsSource ="{Binding roles}" AutoGenerateColumns="true"/>
+        <DataGrid SelectedItem = "{Binding Seleccionado}" Grid.Row = "0" Grid.Column = "0" ItemsSource = "{Binding Roles}" AutoGenerateColumns = "true"/>
+        <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
+            <Button Grid.Row = "1" Grid.Column = "0" Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo"/>
+            <Button Grid.Row = "1" Grid.Column = "0" Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar"/>
+        </StackPanel>
     </Grid>
-</Window>
+</mah:MetroWindow>

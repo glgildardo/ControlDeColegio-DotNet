@@ -1,9 +1,10 @@
 using System.Windows;
 using ControlDeColegio.ModelView;
+using MahApps.Metro.Controls;
 
 namespace ControlDeColegio.Views
 {
-    public partial class RolView : Window
+    public partial class RolView : MetroWindow
     {
         public RolView()
         {

@@ -39,6 +39,10 @@ namespace ControlDeColegio.ModelView
             this.Usuarios.Add(nuevo);
         }
 
+        public void actualizarElemento(Usuarios actualizar)
+        {
+        }
+
         public bool CanExecute(object parametro)
         {
             return true;
@@ -47,6 +51,7 @@ namespace ControlDeColegio.ModelView
         public void Execute(object parametro)
         {
             if(parametro.Equals("Nuevo")){
+                this.Seleccionado = null;
                 UsuarioView nuevoUsuario = new UsuarioView(Instancia);
                 nuevoUsuario.Show();
             }else if (parametro.Equals("Eliminar")){
@@ -54,6 +59,14 @@ namespace ControlDeColegio.ModelView
                     MessageBox.Show("Debe seleccionar un elemento");
                 } else {
                     this.Usuarios.Remove(Seleccionado);
+                }
+            }else if (parametro.Equals("Modificar"))
+            {
+                if(this.Seleccionado == null){
+                    MessageBox.Show("Debe seleccionar un elemento");
+                }else{
+                    UsuarioView modificarUsuario = new UsuarioView(Instancia);
+                    modificarUsuario.ShowDialog();
                 }
             }
         }

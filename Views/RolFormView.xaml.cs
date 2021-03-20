@@ -2,16 +2,16 @@ using System.Windows;
 using ControlDeColegio.ModelView;
 using MahApps.Metro.Controls;
 
+
 namespace ControlDeColegio.Views
 {
-    public partial class UsuarioView : MetroWindow
+    public partial class RolFormView : MetroWindow
     {
-        public UsuarioView(UsuariosViewModel UsuariosViewModel)
+        public RolFormView(RolViewModel RolFormViewModel)
         {
             InitializeComponent();
-            UsuarioViewModel model =  new UsuarioViewModel(UsuariosViewModel);
+            RolFormViewModel model = new RolFormViewModel(RolFormViewModel);
             this.DataContext = model;
-            
         }
     }
 }

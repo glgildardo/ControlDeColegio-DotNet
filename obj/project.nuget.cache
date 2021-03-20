@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "lSB/fbm4GSaLSPOjyTK0sYxx5ugT00mGBWNlSBh5udOUcWSGkXfhKN1BoK8fqcH8K7W14/IPmFCOzbLR+sjdPQ==",
+  "dgSpecHash": "FNAclqesMhyKvyxKLjo9efqq5YYYhXncLAUc9yXAJh64INeKQ1oGVH/YCc9Vrsu9PaBcdXqix1gj+OgQu4wunA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dell\\Documents\\Cursos\\NET\\ControlDeColegio\\ControlDeColegio.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Dell\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\mahapps.metro\\2.4.4\\mahapps.metro.2.4.4.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
   "logs": []
 }

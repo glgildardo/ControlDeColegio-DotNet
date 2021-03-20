@@ -13,44 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ControlDeColegio.Models;
+using ControlDeColegio.ModelView;
 using ControlDeColegio.Views;
+using MahApps.Metro.Controls;
 
 namespace ControlDeColegio
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+            MainViewModel modelo = new MainViewModel();
+            this.DataContext = modelo;
         }
 
-        public void VentanaUsuarios(object sender, RoutedEventArgs e)
-        {
-            UsuariosView VentanaUsuarios = new UsuariosView();
-            VentanaUsuarios.ShowDialog();
-        }
-
-        public void VentanaRoles(object sender, RoutedEventArgs e)
-        {
-            RolView VentanaRoles = new RolView();
-            VentanaRoles.ShowDialog();
-        }
-
-        // public void Saludar(object sender, RoutedEventArgs e)
-        // {
-        //     Student estudiante = new Student("2021001", "Juan Alberto", "De Leon Pereira", "jalberto@gmail.com", new DateTime(1980,3,30), "Masculino", "24876395");
-
-
-        //     Teacher profesor = new Teacher("FK-0001","Raul Antonio", "Perez Polanco", "raperez@gmail.com", new DateTime(1972,01,01), "Masculino", "33124578");
-
-
-        //     MessageBox.Show(profesor.ToString(), "Profesor");
-        //     MessageBox.Show(estudiante.ToString(), "Estudiante");
-        //     // MessageBox.Show("Hola Mundo !");
-            
-        // }
+       
     }
 }
