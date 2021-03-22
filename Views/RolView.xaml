@@ -15,12 +15,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid SelectedItem = "{Binding Seleccionado}" Grid.Row = "0" Grid.Column = "0" ItemsSource = "{Binding Roles}" AutoGenerateColumns = "true">
-            
+        <DataGrid ColumnWidth = "*" CanUserAddRows = "False" SelectedItem = "{Binding Seleccionado}" Grid.Row = "0" Grid.Column = "0" ItemsSource = "{Binding Roles}" AutoGenerateColumns = "false">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                Header="Seleccionar"
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}" />
+                <DataGridTextColumn Binding = "{Binding Nombre}" Header = "Nombre" IsReadOnly = "true"/>
+            </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
             <Button Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo"/>
             <Button Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar"/>
+            <Button Content="Modificar" Command= "{Binding Instancia}" CommandParameter ="Modificar"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

@@ -3,16 +3,16 @@ namespace ControlDeColegio.Models
     public class Rol
     {
         public int Id {get; set;}
-        public string Name {get; set;}
+        public string Nombre {get; set;}
 
         public Rol()
         {
             
         }
-        public Rol(int Id, string Name)
+        public Rol(int Id, string Nombre)
         {
             this.Id = Id;
-            this.Name = Name;     
+            this.Nombre = Nombre;     
         }
     }
 }

@@ -13,6 +13,8 @@ namespace ControlDeColegio.ModelView
         public RolFormViewModel Instancia {get; set;}
         public RolViewModel RolViewModel {get; set;}
         public string Nombre {get; set;}
+        public string HeightlblPassword {get; set;} = "Auto";
+        public string HeightTxtPassword {get; set;} = "Auto";
         
         public RolFormViewModel(RolViewModel RolViewModel)
         {
