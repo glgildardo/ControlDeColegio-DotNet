@@ -38,11 +38,6 @@ namespace ControlDeColegio.ModelView
         public void agregarElemento(Usuarios nuevo){
             this.Usuarios.Add(nuevo);
         }
-
-        public void actualizarElemento(Usuarios actualizar)
-        {
-        }
-
         public bool CanExecute(object parametro)
         {
             return true;

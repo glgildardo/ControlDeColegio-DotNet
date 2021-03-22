@@ -12,7 +12,7 @@ namespace ControlDeColegio.ModelView
     {
         public ObservableCollection<Rol> Roles {get; set;}
 
-        public RolViewModel Instancia{get; set;}
+        public RolViewModel Instancia {get; set;}
         
         public Rol Seleccionado {get;set;}
         public event PropertyChangedEventHandler PropertyChanged;
@@ -21,10 +21,10 @@ namespace ControlDeColegio.ModelView
         public RolViewModel()
         {
             this.Instancia = this;
-            Roles = new ObservableCollection<Rol>();
-            Roles.Add(new Rol(1, "ROLE_ADMIN"));
-            Roles.Add(new Rol(2, "ROLE_USER"));
-            Roles.Add(new Rol(3, "ROLE_SUPERV"));
+            this.Roles = new ObservableCollection<Rol>();
+         this.Roles.Add(new Rol(1, "ROLE_ADMIN"));
+         this.Roles.Add(new Rol(2, "ROLE_USER"));
+         this.Roles.Add(new Rol(3, "ROLE_SUPERV"));
         } 
 
         public void NotificarCambio(string property)
@@ -40,7 +40,7 @@ namespace ControlDeColegio.ModelView
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Execute(object parameter)

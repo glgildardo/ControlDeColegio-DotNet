@@ -21,10 +21,8 @@
         <TextBox Grid.Row = "0" Grid.Column = "1" Text = "{Binding Nombre}"/>
         
         <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
-            <Button Grid.Row = "1" Grid.Column = "0" Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="Guardar"/>
-            <Button Grid.Row = "1" Grid.Column = "0" Content="Cancelar" Command = "{Binding Instancia}" CommandParameter ="Cancelar"/>
+            <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="Guardar"/>
+            <Button Content="Cancelar" Command = "{Binding Instancia}" CommandParameter ="Cancelar"/>
         </StackPanel>
-
-        
     </Grid>
 </mah:MetroWindow>

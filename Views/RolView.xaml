@@ -8,10 +8,19 @@
         mc:Ignorable="d"
         Title="Lista de Roles" Height="450" Width="800">
     <Grid>
-        <DataGrid SelectedItem = "{Binding Seleccionado}" Grid.Row = "0" Grid.Column = "0" ItemsSource = "{Binding Roles}" AutoGenerateColumns = "true"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid SelectedItem = "{Binding Seleccionado}" Grid.Row = "0" Grid.Column = "0" ItemsSource = "{Binding Roles}" AutoGenerateColumns = "true">
+            
+        </DataGrid>
         <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
-            <Button Grid.Row = "1" Grid.Column = "0" Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo"/>
-            <Button Grid.Row = "1" Grid.Column = "0" Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar"/>
+            <Button Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo"/>
+            <Button Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

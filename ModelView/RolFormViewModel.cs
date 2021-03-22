@@ -14,10 +14,10 @@ namespace ControlDeColegio.ModelView
         public RolViewModel RolViewModel {get; set;}
         public string Nombre {get; set;}
         
-        public RolFormViewModel(RolViewModel RolFormViewModel)
+        public RolFormViewModel(RolViewModel RolViewModel)
         {
             this.Instancia = this;
-            this.RolViewModel = RolFormViewModel;
+            this.RolViewModel = RolViewModel;
         }
         public bool CanExecute(object parameter)
         {
@@ -29,7 +29,7 @@ namespace ControlDeColegio.ModelView
             if(parameter.Equals("Guardar"))
             {
                 Rol nuevo = new Rol(4, Nombre);
-                this.RolViewModel.agregarElemento(nuevo);        
+                // this.RolViewModel.agregarElemento(nuevo);        
                 
             }
             else if(parameter.Equals("Cancelar"))

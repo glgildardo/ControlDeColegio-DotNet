@@ -9,6 +9,9 @@ namespace ControlDeColegio.ModelView
 {
     public class UsuarioViewModel : INotifyPropertyChanged, ICommand
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler CanExecuteChanged;
+
         public UsuarioViewModel Instancia {get; set;}
         public UsuariosViewModel UsuariosViewModel {get; set;}
 
@@ -21,8 +24,6 @@ namespace ControlDeColegio.ModelView
         public string HeightTxtPassword {get; set;} = "Auto";
         
         public Usuarios Usuario {get; set;}
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event EventHandler CanExecuteChanged;
 
         public UsuarioViewModel(UsuariosViewModel UsuariosViewModel)
         {
