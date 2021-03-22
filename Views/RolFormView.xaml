@@ -22,7 +22,6 @@
         
         <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
             <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="Guardar"/>
-            <Button Content="Cancelar" Command = "{Binding Instancia}" CommandParameter ="Cancelar"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

@@ -29,12 +29,8 @@ namespace ControlDeColegio.ModelView
             if(parameter.Equals("Guardar"))
             {
                 Rol nuevo = new Rol(4, Nombre);
-                // this.RolViewModel.agregarElemento(nuevo);        
+                this.RolViewModel.agregarElemento(nuevo);        
                 
-            }
-            else if(parameter.Equals("Cancelar"))
-            {
-
             }
         }
         
