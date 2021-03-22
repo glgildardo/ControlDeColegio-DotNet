@@ -47,14 +47,18 @@ namespace ControlDeColegio.ModelView
         {
             if(parameter.Equals("Nuevo"))
             {
+                this.Seleccionado = null;
                 RolFormView nuevoRol = new RolFormView(Instancia);
                 nuevoRol.Show();
             }
             else if (parameter.Equals("Eliminar"))
             {
-                if(this.Seleccionado == null){
+                if(this.Seleccionado == null)
+                {
                     MessageBox.Show("Debe seleccionar un elemento");
-                } else {
+                }
+                else
+                {
                     this.Roles.Remove(Seleccionado);
                 }
             }

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
 using ControlDeColegio.Models;
 
@@ -13,13 +14,17 @@ namespace ControlDeColegio.ModelView
         public RolFormViewModel Instancia {get; set;}
         public RolViewModel RolViewModel {get; set;}
         public string Nombre {get; set;}
-        public string HeightlblPassword {get; set;} = "Auto";
-        public string HeightTxtPassword {get; set;} = "Auto";
         
+        public Rol RolForm {get; set;}
         public RolFormViewModel(RolViewModel RolViewModel)
         {
             this.Instancia = this;
             this.RolViewModel = RolViewModel;
+            if(this.RolViewModel.Seleccionado != null)
+            {
+                this.RolForm = new Rol();
+                this.Nombre = RolViewModel.Seleccionado.Nombre;
+            }
         }
         public bool CanExecute(object parameter)
         {
@@ -28,11 +33,21 @@ namespace ControlDeColegio.ModelView
 
         public void Execute(object parameter)
         {
-            if(parameter.Equals("Guardar"))
+            if(parameter is Window)
             {
-                Rol nuevo = new Rol(4, Nombre);
-                this.RolViewModel.agregarElemento(nuevo);        
-                
+                if(this.RolViewModel.Seleccionado == null)
+                {
+                    Rol nuevo = new Rol(4, Nombre);
+                    this.RolViewModel.agregarElemento(nuevo);                
+                }
+                else
+                {
+                    RolForm.Nombre = this.Nombre;
+                    int posicion = RolViewModel.Roles.IndexOf(this.RolViewModel.Seleccionado);
+                    this.RolViewModel.Roles.RemoveAt(posicion);
+                    this.RolViewModel.Roles.Insert(posicion, RolForm);
+                }
+                ((Window)parameter).Close();
             }
         }
         

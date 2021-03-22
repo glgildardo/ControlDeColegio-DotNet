@@ -6,7 +6,7 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:ControlDeColegio"
         mc:Ignorable="d"
-        Title="Formulario de Roles" Height="450" Width="800" WindowStartupLocation = "CenterScreen" Name="FormularioRol">
+        Title="Formulario de Roles" Height="450" Width="800" WindowStartupLocation = "CenterScreen" Name="FrmRoles">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -21,7 +21,7 @@
         <TextBox Grid.Row = "0" Grid.Column = "1" Text = "{Binding Nombre}"/>
         
         <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
-            <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="Guardar"/>
+            <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="{Binding ElementName = FrmRoles}"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

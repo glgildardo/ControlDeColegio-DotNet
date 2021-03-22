@@ -45,21 +45,31 @@ namespace ControlDeColegio.ModelView
 
         public void Execute(object parametro)
         {
-            if(parametro.Equals("Nuevo")){
+            if(parametro.Equals("Nuevo"))
+            {
                 this.Seleccionado = null;
                 UsuarioView nuevoUsuario = new UsuarioView(Instancia);
                 nuevoUsuario.Show();
-            }else if (parametro.Equals("Eliminar")){
-                if(this.Seleccionado == null){
+            }
+            else if (parametro.Equals("Eliminar"))
+            {
+                if(this.Seleccionado == null)
+                {
                     MessageBox.Show("Debe seleccionar un elemento");
-                } else {
+                }
+                else 
+                {
                     this.Usuarios.Remove(Seleccionado);
                 }
-            }else if (parametro.Equals("Modificar"))
+            }
+            else if (parametro.Equals("Modificar"))
             {
-                if(this.Seleccionado == null){
+                if(this.Seleccionado == null)
+                {
                     MessageBox.Show("Debe seleccionar un elemento");
-                }else{
+                }
+                else
+                {
                     UsuarioView modificarUsuario = new UsuarioView(Instancia);
                     modificarUsuario.ShowDialog();
                 }
