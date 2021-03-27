@@ -1,6 +1,8 @@
 using System.Windows;
 using ControlDeColegio.ModelView;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.Views
 {
@@ -9,7 +11,7 @@ namespace ControlDeColegio.Views
         public UsuariosView()
         {
             InitializeComponent();
-            UsuariosViewModel ModeloDatos = new UsuariosViewModel();
+            UsuariosViewModel ModeloDatos = new UsuariosViewModel(DialogCoordinator.Instance);
             this.DataContext = ModeloDatos; 
         }
     }

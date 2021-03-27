@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ControlDeColegio.Models;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.ModelView
 {
@@ -11,6 +12,8 @@ namespace ControlDeColegio.ModelView
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
+     
+        private IDialogCoordinator dialogCoordinator;
 
         public UsuarioViewModel Instancia {get; set;}
         public UsuariosViewModel UsuariosViewModel {get; set;}
@@ -25,9 +28,10 @@ namespace ControlDeColegio.ModelView
         
         public Usuarios Usuario {get; set;}
 
-        public UsuarioViewModel(UsuariosViewModel UsuariosViewModel)
+        public UsuarioViewModel(UsuariosViewModel UsuariosViewModel, IDialogCoordinator instance)
         {
             this.Instancia = this;
+            this.dialogCoordinator = instance;
             this.UsuariosViewModel = UsuariosViewModel;
             if(this.UsuariosViewModel.Seleccionado != null)
             {
@@ -47,7 +51,7 @@ namespace ControlDeColegio.ModelView
             return true;
         }
 
-        public void Execute(object parametro)
+        public async void Execute(object parametro)
         {
             if(parametro is Window)
             {
@@ -56,7 +60,7 @@ namespace ControlDeColegio.ModelView
                     Usuarios nuevo = new Usuarios(100, Username, true, Nombres, Apellidos, Email);
                     nuevo.Password = ((PasswordBox)((Window)parametro).FindName("TxtPassword")).Password;
                     this.UsuariosViewModel.agregarElemento(nuevo);        
-                    
+                    await dialogCoordinator.ShowMessageAsync(this, "Usuario agregado", "Usuario guardado exitosamente", MessageDialogStyle.Affirmative);
                 }
                 else
                 {
@@ -67,6 +71,7 @@ namespace ControlDeColegio.ModelView
                     int posicion = UsuariosViewModel.Usuarios.IndexOf(this.UsuariosViewModel.Seleccionado);
                     this.UsuariosViewModel.Usuarios.RemoveAt(posicion);
                     this.UsuariosViewModel.Usuarios.Insert(posicion, Usuario);
+                    await dialogCoordinator.ShowMessageAsync(this, "Usuario Actualizado", "Usuario actualizado exitosamente", MessageDialogStyle.Affirmative);
                 }
                 ((Window)parametro).Close();
             }
