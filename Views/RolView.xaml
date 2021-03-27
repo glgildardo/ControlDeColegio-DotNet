@@ -20,7 +20,8 @@
                 <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
                                 EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
                                 Header="Seleccionar"
-                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}" />
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}"
+                                Width = "100" />
                 <DataGridTextColumn Binding = "{Binding Nombre}" Header = "Nombre" IsReadOnly = "true"/>
             </DataGrid.Columns>
         </DataGrid>
