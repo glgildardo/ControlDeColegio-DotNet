@@ -6,39 +6,38 @@
         xmlns:local="clr-namespace:ControlDeColegio"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Formulario de Usuarios" Height="450" Width="800" WindowStartupLocation = "CenterScreen" Name="FrmUsuario">
+        Title="Formulario de Usuarios" Height="250" Width="600" WindowStartupLocation = "CenterScreen" Name="FrmUsuario">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "120"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width = "120"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <Label Content = "Apellidos" Grid.Row = "0" Grid.Column = "0"/>
-        <TextBox Grid.Row = "0" Grid.Column = "1" Text = "{Binding Apellidos}"/>
+        <Label Content = "Apellidos" Grid.Row = "0" Grid.Column = "0" />
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "0" Grid.Column = "1" Text = "{Binding Apellidos}"/>
         
-        <Label Content = "Nombres" Grid.Row = "1" Grid.Column = "0"/>
-        <TextBox Grid.Row = "1" Grid.Column = "1" Text = "{Binding Nombres}"/>
+        <Label Content = "Nombres"   Grid.Row = "1" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2"  Grid.Row = "1" Grid.Column = "1" Text = "{Binding Nombres}"/>
         
-        <Label Content = "Email" Grid.Row = "2" Grid.Column = "0"/>
-        <TextBox Grid.Row = "2" Grid.Column = "1" Text = "{Binding Email}"/>
+        <Label Content = "Email"   Grid.Row = "2" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "2" Grid.Column = "1" Text = "{Binding Email}"/>
         
-        <Label Content = "Username" Grid.Row = "3" Grid.Column = "0"/>
-        <TextBox Grid.Row = "3" Grid.Column = "1" Text = "{Binding Username}"/>
+        <Label Content = "Username"   Grid.Row = "3" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "3" Grid.Column = "1" Text = "{Binding Username}"/>
        
-        <Label Content = "Password" Grid.Row = "4" Grid.Column = "0" Height = "{Binding HeightlblPassword}"/>
-        <PasswordBox x:Name = "TxtPassword" Grid.Row = "4" Grid.Column = "1" Height = "{Binding HeightTxtPassword}"/>
+        <Label Content = "Password"   Grid.Row = "4" Grid.Column = "0" Height = "{Binding HeightlblPassword}"/>
+        <PasswordBox Margin = "0, 2, 2, 2" x:Name = "TxtPassword" Grid.Row = "4" Grid.Column = "1" Height = "{Binding HeightTxtPassword}"/>
         
-        <StackPanel Grid.Row = "5" Grid.Column = "0" Orientation = "Vertical">
+        <StackPanel Margin = "25" Grid.Row = "5" Grid.ColumnSpan = "2" Orientation = "Vertical">
             <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="{Binding ElementName = FrmUsuario}"/>
-            <Button Content="Cancelar" Command = "{Binding Instancia}" CommandParameter ="Cancelar"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

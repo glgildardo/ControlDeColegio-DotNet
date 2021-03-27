@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height = "40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -20,18 +20,19 @@
                 <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
                                 EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
                                 Header="Seleccionar"
-                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}" />
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}"
+                                Width = "100" />
                 <DataGridTextColumn Binding = "{Binding Apellidos}" Header = "Apellidos" IsReadOnly = "true"/>
                 <DataGridTextColumn Binding = "{Binding Nombres}" Header = "Nombre" IsReadOnly = "true"/>
-                <DataGridCheckBoxColumn Binding = "{Binding Enable}" Header = "Enable" IsReadOnly = "true"/>
+                <DataGridCheckBoxColumn Binding = "{Binding Enable}" Header = "Enable" IsReadOnly = "true" Width = "80"/>
                 <DataGridTextColumn Binding = "{Binding Username}" Header = "Username" IsReadOnly = "true"/>
                 <DataGridTextColumn Binding = "{Binding Email}" Header = "Email" IsReadOnly = "true"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Vertical">
-            <Button Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo"/>
-            <Button Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar"/>
-            <Button Content="Modificar" Command = "{Binding Instancia}" CommandParameter = "Modificar"/>
+        <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Horizontal">
+            <Button Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo" Margin = "3"/>
+            <Button Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar" Margin = "3"/>
+            <Button Content="Modificar" Command = "{Binding Instancia}" CommandParameter = "Modificar" Margin = "3"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>
