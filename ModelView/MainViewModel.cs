@@ -39,6 +39,11 @@ namespace ControlDeColegio.ModelView
                 HorarioView ventanaHorario = new HorarioView();
                 ventanaHorario.ShowDialog();
             }
+            else if(parametro.Equals("Salon"))
+            {
+                SalonView ventanaSalon = new SalonView();
+                ventanaSalon.ShowDialog();
+            }
         }
     }
 }

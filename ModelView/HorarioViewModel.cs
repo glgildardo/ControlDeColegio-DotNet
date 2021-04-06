@@ -73,7 +73,8 @@ namespace ControlDeColegio.ModelView
             {
                 if(this.Seleccionado == null)
                 {
-                    await this.dialogCoordinator.ShowMessageAsync(this, "Horario", "Debe seleccionar un elemento");
+                    await this.dialogCoordinator.ShowMessageAsync(this, 
+                    "Horario", "Debe seleccionar un elemento");
                 }
                 else
                 {
