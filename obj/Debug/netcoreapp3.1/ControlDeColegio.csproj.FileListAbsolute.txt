@@ -32,3 +32,7 @@ C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\bin\Debug\netcoreapp3.1\Syst
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\bin\Debug\netcoreapp3.1\de\MahApps.Metro.resources.dll
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\App.baml
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\ControlDeColegio.csproj.CopyComplete
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioFormView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioFormView.baml

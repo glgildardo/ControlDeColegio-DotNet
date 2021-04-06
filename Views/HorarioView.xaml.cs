@@ -5,13 +5,13 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.Views
 {
-    public partial class UsuariosView : MetroWindow
+    public partial class HorarioView : MetroWindow
     {
-        public UsuariosView()
+        public HorarioView()
         {
             InitializeComponent();
-            UsuariosViewModel ModeloDatos = new UsuariosViewModel(DialogCoordinator.Instance);
-            this.DataContext = ModeloDatos; 
+            HorarioViewModel ModelDatos = new HorarioViewModel(DialogCoordinator.Instance);
+            this.DataContext = ModelDatos;
         }
     }
 }
