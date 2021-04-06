@@ -34,6 +34,11 @@ namespace ControlDeColegio.ModelView
                 RolView ventanaRoles = new RolView();
                 ventanaRoles.ShowDialog();
             }
+            else if(parametro.Equals("Horario"))
+            {
+                HorarioView ventanaHorario = new HorarioView();
+                ventanaHorario.ShowDialog();
+            }
         }
     }
 }
