@@ -28,10 +28,10 @@
                 <DataGridTextColumn Binding = "{Binding HorarioFinal}" Header = "HorarioFinal" IsReadOnly = "true"/>
             </DataGrid.Columns>
         </DataGrid>
-        <!-- <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Horizontal">
+        <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Horizontal">
             <Button Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo" Margin = "3"/>
             <Button Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar" Margin = "3"/>
             <Button Content="Modificar" Command = "{Binding Instancia}" CommandParameter = "Modificar" Margin = "3"/>
-        </StackPanel> -->
+        </StackPanel>
     </Grid>
 </mah:MetroWindow>

@@ -10,7 +10,7 @@ namespace ControlDeColegio.Views
         public HorarioView()
         {
             InitializeComponent();
-            HorarioViewModel ModelDatos = new HorarioViewModel();
+            HorarioViewModel ModelDatos = new HorarioViewModel(DialogCoordinator.Instance);
             this.DataContext = ModelDatos;
         }
     }

@@ -34,3 +34,5 @@ C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\App.
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\ControlDeColegio.csproj.CopyComplete
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioView.g.cs
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioFormView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\HorarioFormView.baml
