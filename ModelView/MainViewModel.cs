@@ -44,6 +44,11 @@ namespace ControlDeColegio.ModelView
                 SalonView ventanaSalon = new SalonView();
                 ventanaSalon.ShowDialog();
             }
+            else if(parametro.Equals("Instructor"))
+            {
+                InstructorView ventanaInstructor = new InstructorView();
+                ventanaInstructor.ShowDialog();
+            }
         }
     }
 }
