@@ -24,9 +24,9 @@
                         <MenuItem Header = "Horarios" Command = "{Binding Instancia}" CommandParameter = "Horario"/>
                         <MenuItem Header = "Salones" Command = "{Binding Instancia}" CommandParameter = "Salon"/>
                         <MenuItem Header = "Instructores" Command = "{Binding Instancia}" CommandParameter = "Instructor"/>
+                        <MenuItem Header = "Carreras" Command = "{Binding Instancia}" CommandParameter = "Carrera"/>
                         <MenuItem Header = "Alumnos"/>
                         <MenuItem Header = "Salones"/>
-                        <MenuItem Header = "Carreras"/>
                         <MenuItem Header = "Modulos"/>
                         <MenuItem Header = "Seminarios"/>
                         <MenuItem Header = "Detalle de Actividades"/>
@@ -34,7 +34,6 @@
                         <MenuItem Header = "Detalles de Notas"/>
                         <MenuItem Header = "Clases"/>
                         <!-- <MenuItem Header = "Alumnos" Command = "{Binding Instancia}" CommandParameter = "Alumnos"/> -->
-                        <!-- <MenuItem Header = "Carreras" Command = "{Binding Instancia}" CommandParameter = "Carreras"/> -->
                         <!-- <MenuItem Header = "Modulos" Command = "{Binding Instancia}" CommandParameter = "Modulos"/> -->
                         <!-- <MenuItem Header = "Seminarios" Command = "{Binding Instancia}" CommandParameter = "Seminarios"/> -->
                         <!-- <MenuItem Header = "DetallesActividad" Command = "{Binding Instancia}" CommandParameter = "DetallesActividad"/> -->
