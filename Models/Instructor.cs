@@ -9,7 +9,7 @@ namespace ControlDeColegio.Models
         public string Direccion {get; set;}
         public string Estatus {get; set;}
         public string Foto {get; set;}
-        public string Nobmres {get; set;}
+        public string Nombres {get; set;}
         public string Telefono {get; set;}
         public Instructor()
         {
@@ -23,7 +23,7 @@ namespace ControlDeColegio.Models
             this.Direccion = Direccion;
             this.Estatus = Estatus;
             this.Foto = Foto;
-            this.Nobmres = Nombres;
+            this.Nombres = Nombres;
             this.Telefono = Telefono;
         }
     }

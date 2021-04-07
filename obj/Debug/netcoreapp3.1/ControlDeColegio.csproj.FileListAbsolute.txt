@@ -40,3 +40,7 @@ C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\View
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\SalonView.baml
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\SalonFormView.g.cs
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\SalonFormView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\InstructorFormView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\InstructorView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\InstructorFormView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\InstructorView.baml

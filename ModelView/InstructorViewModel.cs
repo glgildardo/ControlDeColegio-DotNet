@@ -8,23 +8,26 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.ModelView
 {
-    public class SalonViewModel : INotifyPropertyChanged, ICommand
+    public class InstructorViewModel : INotifyPropertyChanged, ICommand
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
         private IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<Salon> Salon {get; set;}        
-        public SalonViewModel Instancia {get; set;}
-        public Salon Seleccionado {get; set;}
-
-        public SalonViewModel(IDialogCoordinator instance)
+        public ObservableCollection<Instructor> Instructor {get; set;}
+        public InstructorViewModel Instancia {get; set;}
+        public Instructor Seleccionado {get; set;}
+        public InstructorViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.Salon = new ObservableCollection<Salon>();
-            this.Salon.Add(new Salon("1", 5, "Salon de 5to primaria", "5to A"));
-            this.Salon.Add(new Salon("1", 6, "Salon de 5to primaria", "5to B"));
-            this.Salon.Add(new Salon("1", 8, "Salon de 5to primaria", "5to C"));
+            this.Instructor = new ObservableCollection<Instructor>();
+            this.Instructor.Add(new Instructor("1", "Pelope Lopez", "Instructor que hace trabaja bien", "6ta. calle A", "Activo", "Foto", "Filomeno Chente", "52541312"));
+            this.Instructor.Add(new Instructor("2", "Caceres Mazariegos", "Le falta capacitacion", "5ta. calle B", "Activo", "Foto", "Daniel Diego", "54531413"));
+            this.Instructor.Add(new Instructor("3", "Velasquez Vasquez", "Buen trabajo", "4ta. calle C", "Activo", "Foto", "Filomeno Chente", "52541312"));
+        }
+        public bool CanExecute(object parameter)
+        {
+            return true;
         }
 
         public void NotificarCambio(string property)
@@ -34,37 +37,32 @@ namespace ControlDeColegio.ModelView
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
-        public void agregarElemento(Salon nuevo)
+        public void agregarElemento(Instructor nuevo)
         {
-            this.Salon.Add(nuevo);
+            this.Instructor.Add(nuevo);
         }
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
         public async void Execute(object parameter)
         {
             if(parameter.Equals("Nuevo"))
             {
                 this.Seleccionado = null;
-                SalonFormView nuevoSalon = new SalonFormView(Instancia);
-                nuevoSalon.Show();
+                InstructorFormView nuevoInstructor = new InstructorFormView(Instancia);
+                nuevoInstructor.Show();
             }
             else if(parameter.Equals("Eliminar"))
             {
                 if(this.Seleccionado == null)
                 {
-                    await this.dialogCoordinator.ShowMessageAsync(this, "Salon", "Sebe seleccionar un Salon", MessageDialogStyle.Affirmative);
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Instructor", "Sebe seleccionar un Instructor", MessageDialogStyle.Affirmative);
                 }
                 else 
                 {
                     MessageDialogResult respuesta = await this.dialogCoordinator.ShowMessageAsync(this,
-                        "Eliminar Salon", "¿Esta seguro de eliminar el salon?",
+                        "Eliminar Instructor", "¿Esta seguro de eliminar el Instructor?",
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
-                        this.Salon.Remove(Seleccionado);
+                        this.Instructor.Remove(Seleccionado);
                     }
                 }
             }
@@ -73,12 +71,12 @@ namespace ControlDeColegio.ModelView
                 if(this.Seleccionado == null)
                 {
                     await this.dialogCoordinator.ShowMessageAsync(this,
-                    "Seleccionar Salon", "Debe seleccionar un salon");
+                    "Seleccionar Instructor", "Debe seleccionar un Instructor");
                 }
                 else
                 {
-                    SalonFormView modificarSalon = new SalonFormView(Instancia);
-                    modificarSalon.ShowDialog();
+                    InstructorFormView modificarInstructor = new InstructorFormView(Instancia);
+                    modificarInstructor.ShowDialog();
                 }
             }
         }
