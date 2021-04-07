@@ -49,6 +49,11 @@ namespace ControlDeColegio.ModelView
                 InstructorView ventanaInstructor = new InstructorView();
                 ventanaInstructor.ShowDialog();
             }
+            else if(parametro.Equals("Carrera"))
+            {
+                CarreraView ventanaCarrera = new CarreraView();
+                ventanaCarrera.ShowDialog();
+            }
         }
     }
 }

@@ -44,3 +44,7 @@ C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\View
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\InstructorView.g.cs
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\InstructorFormView.baml
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\InstructorView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\CarreraFormView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\CarreraView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\CarreraFormView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\CarreraView.baml
