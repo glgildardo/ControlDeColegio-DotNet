@@ -59,6 +59,11 @@ namespace ControlDeColegio.ModelView
                 ModuloView ventanaModulo = new ModuloView();
                 ventanaModulo.ShowDialog();
             }
+            else if(parametro.Equals("Seminario"))
+            {
+                SeminarioView ventanaSeminario = new SeminarioView();
+                ventanaSeminario.ShowDialog();
+            }
         }
     }
 }

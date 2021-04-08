@@ -27,7 +27,6 @@ namespace ControlDeColegio.ModelView
                 this.CarreraId = ModuloViewModel.Seleccionado.CarreraId;
                 this.NombreModulo = ModuloViewModel.Seleccionado.NombreModulo;
                 this.NumeroDeSeminarios = ModuloViewModel.Seleccionado.NumeroDeSeminarios;
-
             }
         }
         public bool CanExecute(object parameter)
