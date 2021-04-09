@@ -55,7 +55,7 @@ namespace ControlDeColegio.ModelView
                 if(this.Seleccionado == null)
                 {
                     await this.dialogCoordinator.ShowMessageAsync(this, 
-                        "Carrera", "Sebe seleccionar una Carrera",
+                        "Carrera", "Debe seleccionar una Carrera",
                          MessageDialogStyle.Affirmative);
                 }
                 else 

@@ -64,6 +64,11 @@ namespace ControlDeColegio.ModelView
                 SeminarioView ventanaSeminario = new SeminarioView();
                 ventanaSeminario.ShowDialog();
             }
+            else if(parametro.Equals("DetalleActividad"))
+            {
+                DetalleActividadView ventanaDetalleActividad = new DetalleActividadView();
+                ventanaDetalleActividad.ShowDialog();
+            }
         }
     }
 }

@@ -58,7 +58,7 @@ namespace ControlDeColegio.ModelView
                 if(this.Seleccionado == null)
                 {
                     await this.dialogCoordinator.ShowMessageAsync(this, 
-                        "Modulo", "Sebe seleccionar una Modulo",
+                        "Modulo", "Debe seleccionar una Modulo",
                          MessageDialogStyle.Affirmative);
                 }
                 else 

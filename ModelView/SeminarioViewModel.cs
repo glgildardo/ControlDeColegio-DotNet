@@ -57,7 +57,7 @@ namespace ControlDeColegio.ModelView
                 if(this.Seleccionado == null)
                 {
                     await this.dialogCoordinator.ShowMessageAsync(this, 
-                        "Seminario", "Sebe seleccionar una Seminario",
+                        "Seminario", "Debe seleccionar una Seminario",
                          MessageDialogStyle.Affirmative);
                 }
                 else 
