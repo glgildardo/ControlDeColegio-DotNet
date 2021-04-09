@@ -60,3 +60,7 @@ C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\View
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\DetalleActividadView.g.cs
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\DetalleActividadFormView.baml
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\DetalleActividadView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\AsignacionAlumnoFormView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\AsignacionAlumnoView.g.cs
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\AsignacionAlumnoFormView.baml
+C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\obj\Debug\netcoreapp3.1\Views\AsignacionAlumnoView.baml
