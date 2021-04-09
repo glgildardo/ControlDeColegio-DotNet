@@ -27,12 +27,11 @@
                         <MenuItem Header = "Carreras" Command = "{Binding Instancia}" CommandParameter = "Carrera"/>
                         <MenuItem Header = "Modulos" Command = "{Binding Instancia}" CommandParameter = "Modulo"/>
                         <MenuItem Header = "Seminarios" Command = "{Binding Instancia}" CommandParameter = "Seminario"/>
-                        <MenuItem Header = "Detalle de Actividades"/>
+                        <MenuItem Header = "Detalles de Actividad" Command = "{Binding Instancia}" CommandParameter = "DetalleActividad"/>
                         <MenuItem Header = "Asignacion de Alumno"/>
                         <MenuItem Header = "Detalles de Notas"/>
                         <MenuItem Header = "Clases"/>
                         <!-- <MenuItem Header = "Alumnos" Command = "{Binding Instancia}" CommandParameter = "Alumnos"/> -->
-                        <!-- <MenuItem Header = "DetallesActividad" Command = "{Binding Instancia}" CommandParameter = "DetallesActividad"/> -->
                         <!-- <MenuItem Header = "AsignacionAlumno" Command = "{Binding Instancia}" CommandParameter = "AsignacionAlumno"/> -->
                         <!-- <MenuItem Header = "DetalleNota" Command = "{Binding Instancia}" CommandParameter = "DetalleNota"/> -->
                         <!-- <MenuItem Header = "Clases" Command = "{Binding Instancia}" CommandParameter = "Clases"/> -->
