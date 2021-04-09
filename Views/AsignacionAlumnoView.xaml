@@ -1,0 +1,38 @@
+<mah:MetroWindow x:Class="ControlDeColegio.Views.AsignacionAlumnoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:ControlDeColegio"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        Dialog:DialogParticipation.Register="{Binding}"
+        mc:Ignorable="d"
+        Title="Asignacion De Alumno" Height="200" Width="600" WindowStartupLocation = "CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height = "40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid ColumnWidth = "*" CanUserAddRows = "False" SelectedItem = "{Binding Seleccionado}" Grid.Row = "0" Grid.Column = "0" ItemsSource = "{Binding AsignacionAlumno}" AutoGenerateColumns = "false">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                Header="Seleccionar"
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}"
+                                Width = "100" />
+                <DataGridTextColumn Binding = "{Binding Carne}" Header = "Carne" IsReadOnly = "true"/>
+                <DataGridTextColumn Binding = "{Binding ClaseId}" Header = "Clase" IsReadOnly = "true"/>
+                <DataGridTextColumn Binding = "{Binding FechaAsignacion}" Header = "Fecha De Asignacion" IsReadOnly = "true"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Horizontal">
+            <Button Content="Nuevo" Command= "{Binding Instancia}" CommandParameter ="Nuevo" Margin = "3"/>
+            <Button Content="Eliminar" Command= "{Binding Instancia}" CommandParameter ="Eliminar" Margin = "3"/>
+            <Button Content="Modificar" Command = "{Binding Instancia}" CommandParameter = "Modificar" Margin = "3"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>
