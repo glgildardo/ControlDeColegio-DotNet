@@ -8,28 +8,29 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.ModelView
 {
-    public class AsignacionAlumnoViewModel : INotifyPropertyChanged, ICommand
+    public class DetalleNotaViewModel : INotifyPropertyChanged, ICommand
+
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
         public IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<AsignacionAlumno> AsignacionAlumno {get; set;}
-        public AsignacionAlumno Seleccionado {get; set;}
-        public AsignacionAlumnoViewModel Instancia {get; set;}
+        public ObservableCollection<DetalleNota> DetalleNota {get; set;}
+        public DetalleNota Seleccionado {get; set;}
+        public DetalleNotaViewModel Instancia {get; set;}
         
-        public AsignacionAlumnoViewModel(IDialogCoordinator instance)
+        public DetalleNotaViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.AsignacionAlumno = new ObservableCollection<AsignacionAlumno>();
-            this.AsignacionAlumno.Add(new AsignacionAlumno("1", "2021001", "1", new DateTime(2021, 04, 15)));
-            this.AsignacionAlumno.Add(new AsignacionAlumno("2", "2021002", "2", new DateTime(2021, 04, 14)));
-            this.AsignacionAlumno.Add(new AsignacionAlumno("3", "2021003", "3", new DateTime(2021, 04, 13)));
+            this.DetalleNota = new ObservableCollection<DetalleNota>();
+            this.DetalleNota.Add(new DetalleNota("1", "1", "2021001", 9));
+            this.DetalleNota.Add(new DetalleNota("2", "2", "2021002", 10));
+            this.DetalleNota.Add(new DetalleNota("3", "3", "2021003", 8));
         }
 
-        public void agregarElemento(AsignacionAlumno nuevo)
+        public void agregarElemento(DetalleNota nuevo)
         {
-            this.AsignacionAlumno.Add(nuevo);
+            this.DetalleNota.Add(nuevo);
         }
 
         public void NotificarCambio(string property)
@@ -49,25 +50,25 @@ namespace ControlDeColegio.ModelView
             if(parameter.Equals("Nuevo"))
             {
                 this.Seleccionado = null;
-                AsignacionAlumnoFormView nuevoAsignacionAlumno = new AsignacionAlumnoFormView(Instancia);
-                nuevoAsignacionAlumno.Show();
+                DetalleNotaFormView nuevoDetalleNota = new DetalleNotaFormView(Instancia);
+                nuevoDetalleNota.Show();
             }
             else if(parameter.Equals("Eliminar")) 
             {
                 if(this.Seleccionado == null)
                 {
                     await this.dialogCoordinator.ShowMessageAsync(this,
-                        "Asignacion de Alumno", "Debe seleccionar la Asignacion para el Alumno",
+                        "Detalle de Nota", "Debe seleccionar el Detalle de la Nota que desea eliminar",
                         MessageDialogStyle.Affirmative);
                 }
                 else
                 {
                     MessageDialogResult respuesta = await this.dialogCoordinator.ShowMessageAsync(this,
-                        "Eliminar la asignación del alumno", "¿Esta seguro de eliminar la asignacion del alumno?",
+                        "Eliminar el Detalle de la Nota", "¿Esta seguro de eliminar el Detalle de la Nota?",
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
-                        this.AsignacionAlumno.Remove(Seleccionado);
+                        this.DetalleNota.Remove(Seleccionado);
                     }
                 }
             }
@@ -76,12 +77,12 @@ namespace ControlDeColegio.ModelView
                 if(this.Seleccionado == null)
                 {
                     await this.dialogCoordinator.ShowMessageAsync(this,
-                    "Seleccionar el Asignacion de Alumno", "Debe seleccionar el Asignacion de Alumno");
+                    "Seleccionar el Detalle de la Nota", "Debe seleccionar el detalle de la nota");
                 }
                 else
                 {
-                    AsignacionAlumnoFormView modificarAsignacionAlumno = new AsignacionAlumnoFormView(Instancia);
-                    modificarAsignacionAlumno.ShowDialog();
+                    DetalleNotaFormView modificarDetalleNota = new DetalleNotaFormView(Instancia);
+                    modificarDetalleNota.ShowDialog();
                 }
             }
         }
