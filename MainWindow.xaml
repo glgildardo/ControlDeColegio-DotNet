@@ -30,9 +30,8 @@
                         <MenuItem Header = "Detalles de Actividad" Command = "{Binding Instancia}" CommandParameter = "DetalleActividad"/>
                         <MenuItem Header = "Asignacion de Alumno" Command = "{Binding Instancia}" CommandParameter = "AsignacionAlumno"/>
                         <MenuItem Header = "Detalle de Nota" Command = "{Binding Instancia}" CommandParameter = "DetalleNota"/>
-                        <MenuItem Header = "Clases"/>
+                        <MenuItem Header = "Clases" Command = "{Binding Instancia}" CommandParameter = "Clase"/>
                         <!-- <MenuItem Header = "Alumnos" Command = "{Binding Instancia}" CommandParameter = "Alumnos"/> -->
-                        <!-- <MenuItem Header = "Clases" Command = "{Binding Instancia}" CommandParameter = "Clases"/> -->
                         <MenuItem Header = "Reportes"/>
                     </MenuItem>
                     <Separator/>
