@@ -74,6 +74,11 @@ namespace ControlDeColegio.ModelView
                 AsignacionAlumnoView ventanaAsignacionAlumno = new AsignacionAlumnoView();
                 ventanaAsignacionAlumno.ShowDialog();
             }
+            else if(parametro.Equals("DetalleNota"))
+            {
+                DetalleNotaView ventanaDetalleNota = new DetalleNotaView();
+                ventanaDetalleNota.ShowDialog();
+            }
         }
     }
 }
