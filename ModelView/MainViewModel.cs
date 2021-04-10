@@ -34,6 +34,61 @@ namespace ControlDeColegio.ModelView
                 RolView ventanaRoles = new RolView();
                 ventanaRoles.ShowDialog();
             }
+            else if(parametro.Equals("Alumno"))
+            {
+                AlumnoView ventanaAlumno = new AlumnoView();
+                ventanaAlumno.ShowDialog();
+            }
+            else if(parametro.Equals("Horario"))
+            {
+                HorarioView ventanaHorario = new HorarioView();
+                ventanaHorario.ShowDialog();
+            }
+            else if(parametro.Equals("Salon"))
+            {
+                SalonView ventanaSalon = new SalonView();
+                ventanaSalon.ShowDialog();
+            }
+            else if(parametro.Equals("Instructor"))
+            {
+                InstructorView ventanaInstructor = new InstructorView();
+                ventanaInstructor.ShowDialog();
+            }
+            else if(parametro.Equals("Carrera"))
+            {
+                CarreraView ventanaCarrera = new CarreraView();
+                ventanaCarrera.ShowDialog();
+            }
+            else if(parametro.Equals("Modulo"))
+            {
+                ModuloView ventanaModulo = new ModuloView();
+                ventanaModulo.ShowDialog();
+            }
+            else if(parametro.Equals("Seminario"))
+            {
+                SeminarioView ventanaSeminario = new SeminarioView();
+                ventanaSeminario.ShowDialog();
+            }
+            else if(parametro.Equals("DetalleActividad"))
+            {
+                DetalleActividadView ventanaDetalleActividad = new DetalleActividadView();
+                ventanaDetalleActividad.ShowDialog();
+            }
+            else if(parametro.Equals("AsignacionAlumno"))
+            {
+                AsignacionAlumnoView ventanaAsignacionAlumno = new AsignacionAlumnoView();
+                ventanaAsignacionAlumno.ShowDialog();
+            }
+            else if(parametro.Equals("DetalleNota"))
+            {
+                DetalleNotaView ventanaDetalleNota = new DetalleNotaView();
+                ventanaDetalleNota.ShowDialog();
+            }
+            else if(parametro.Equals("Clase"))
+            {
+                ClaseView ventanaClase = new ClaseView();
+                ventanaClase.ShowDialog();
+            }
         }
     }
 }

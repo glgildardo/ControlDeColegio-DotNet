@@ -1,0 +1,51 @@
+<mah:MetroWindow x:Class="ControlDeColegio.Views.DetalleActividadFormView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:ControlDeColegio"
+        mc:Ignorable="d"
+        Title="Formulario de Detalle de Actividades" Height="400" Width="650" WindowStartupLocation = "CenterScreen" Name="FrmDetalleActividad">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "30"/>
+            <RowDefinition Height = "120"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "130"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content = "Seminario" Grid.Row = "0" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "0" Grid.Column = "1" Text = "{Binding SeminarioId}"/>
+        
+        <Label Content = "Nombre de Actividad" Grid.Row = "1" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "1" Grid.Column = "1" Text = "{Binding NombreActividad}"/>
+        
+        <Label Content = "Nota de Actividad" Grid.Row = "2" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "2" Grid.Column = "1" Text = "{Binding NotaActividad}"/>
+        
+        <Label Content = "Fecha de Creacion" Grid.Row = "3" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "3" Grid.Column = "1" Text = "{Binding FechaCreacion}"/>
+        
+        <Label Content = "Fecha de Entrega" Grid.Row = "4" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "4" Grid.Column = "1" Text = "{Binding FechaEntrega}"/>
+        
+        <Label Content = "Fecha de Postergacion" Grid.Row = "5" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "5" Grid.Column = "1" Text = "{Binding FechaPostergacion}"/>
+        
+        <Label Content = "Estado" Grid.Row = "6" Grid.Column = "0"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "6" Grid.Column = "1" Text = "{Binding Estado}"/>
+        
+        <StackPanel Margin = "2" Grid.Row = "7" Grid.ColumnSpan = "2" Orientation = "Vertical">
+            <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="{Binding ElementName = FrmDetalleActividad}"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>

@@ -59,7 +59,6 @@ namespace ControlDeColegio.ModelView
             {
                 if(this.Seleccionado == null)
                 {
-
                     await this.dialogCoordinator.ShowMessageAsync(this,"Usuario", "Debe seleccionar un elemento",MessageDialogStyle.Affirmative);
                 }
                 else 
@@ -67,7 +66,8 @@ namespace ControlDeColegio.ModelView
                     MessageDialogResult respuesta = await this.dialogCoordinator.ShowMessageAsync(this,
                         "Eliminar usuario", "Esta seguro de eliminaar el regristro",
                         MessageDialogStyle.AffirmativeAndNegative);
-                    if(respuesta == MessageDialogResult.Affirmative){
+                    if(respuesta == MessageDialogResult.Affirmative)
+                    {
                         this.Usuarios.Remove(Seleccionado);
                     }
                 }
@@ -76,7 +76,7 @@ namespace ControlDeColegio.ModelView
             {
                 if(this.Seleccionado == null)
                 {   
-                    await this.dialogCoordinator.ShowMessageAsync(this,"Usuario", "Debe seleccionar un elemento", MessageDialogStyle.Affirmative);
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Usuario", "Debe seleccionar un elemento", MessageDialogStyle.Affirmative);
                 }
                 else
                 {
