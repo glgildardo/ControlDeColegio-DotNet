@@ -79,6 +79,11 @@ namespace ControlDeColegio.ModelView
                 DetalleNotaView ventanaDetalleNota = new DetalleNotaView();
                 ventanaDetalleNota.ShowDialog();
             }
+            else if(parametro.Equals("Clase"))
+            {
+                ClaseView ventanaClase = new ClaseView();
+                ventanaClase.ShowDialog();
+            }
         }
     }
 }
