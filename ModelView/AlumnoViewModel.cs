@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -14,7 +16,25 @@ namespace ControlDeColegio.ModelView
         public event EventHandler CanExecuteChanged;
         public event PropertyChangedEventHandler PropertyChanged;
         public IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<Alumno> Alumno {get; set;}
+
+        public KalumDBContext dBContext = new KalumDBContext();
+
+        public ObservableCollection<Alumno> _Alumno;
+        public ObservableCollection<Alumno> Alumno 
+        {
+            get
+            {
+                if(this._Alumno == null)
+                {
+                    this._Alumno = new ObservableCollection<Alumno>(dBContext.Alumnos.ToList());
+                }
+                return this._Alumno;
+            } 
+            set
+            {
+                this.Alumno = value;
+            }
+        }
         public AlumnoViewModel Instancia {get; set;}
         public Alumno Seleccionado {get; set;}
 
@@ -22,10 +42,6 @@ namespace ControlDeColegio.ModelView
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.Alumno = new ObservableCollection<Alumno>();
-            this.Alumno.Add(new Alumno("2021001", "1", "de la Cruz Cierra", "Penelope Luisa", "Luisa@gmail.com"));
-            this.Alumno.Add(new Alumno("2021002", "2", "Paz Tol", "Luis Pedro", "Luis@gmail.com"));
-            this.Alumno.Add(new Alumno("2021003", "3", "Noroeste Lopez", "Jose Ernesto", "Jose@gmail.com"));
         }
 
         public void NotificarCambio(string property)
@@ -68,6 +84,8 @@ namespace ControlDeColegio.ModelView
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
+                        this.dBContext.Remove(this.Seleccionado);
+                        this.dBContext.SaveChanges();
                         this.Alumno.Remove(Seleccionado);
                     }
                 }
