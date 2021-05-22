@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Data.SqlClient;
+using System.Linq;
 
 namespace ControlDeColegio.ModelView
 {
@@ -60,9 +62,20 @@ namespace ControlDeColegio.ModelView
                 {
                     if (this.AlumnoViewModel.Seleccionado == null)
                     {
-                        Alumno nuevo = new Alumno(Carne, NoExpediente, Apellidos, Nombres, Email);
-                        this.dbContext.Alumnos.Add(nuevo);
-                        this.AlumnoViewModel.agregarElemento(nuevo);
+                        var ApellidosParameter = new SqlParameter("@Apellidos", this.Apellidos);
+                        var NombresParameter = new SqlParameter("@Nombres", this.Nombres);
+                        var EmailParameter = new SqlParameter("@Email", this.Email);
+                        var Resultado = this.dbContext.Alumnos
+                                                        .FromSqlRaw("sp_registrar_alumno @Apellidos, @Nombres, @Email", ApellidosParameter, NombresParameter, EmailParameter)
+                                                        .ToList();
+                        foreach(Object registro in Resultado){
+                            this.AlumnoViewModel.Alumno.Add((Alumno)registro);
+                        }
+                        await DialogCoordinator.ShowMessageAsync(this, "Alumno", "Registro Actualizado");
+                        // Alumno nuevo = new Alumno(Carne, NoExpediente, Apellidos, Nombres, Email);
+                        // this.AlumnoViewModel.agregarElemento(nuevo);
+                        
+                        // this.dbContext.Alumnos.Add(nuevo);
                     }
                     else
                     {
@@ -76,7 +89,7 @@ namespace ControlDeColegio.ModelView
                         this.AlumnoViewModel.Alumno.RemoveAt(posicion);
                         this.AlumnoViewModel.Alumno.Insert(posicion, AlumnoForm);
                     }
-                    this.dbContext.SaveChanges();
+                    // this.dbContext.SaveChanges();
                     ((Window)parameter).Close();
                 } catch (Exception e) {
                     await this.DialogCoordinator.ShowMessageAsync(this, "Error", e.Message);
