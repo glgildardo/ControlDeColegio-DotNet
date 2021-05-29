@@ -7,6 +7,8 @@ using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace ControlDeColegio.ModelView
 {
@@ -19,12 +21,13 @@ namespace ControlDeColegio.ModelView
         public KalumDBContext dBContext = new KalumDBContext();
         public Clase Seleccionado {get; set;}
         public ClaseViewModel Instancia {get; set;}
+
         public ObservableCollection<Clase> _Clase {get; set;}
         public ObservableCollection<Clase> Clase 
         {
             get{
                 if(this._Clase == null) {
-                    this._Clase = new ObservableCollection<Clase>(dBContext.Clases.ToList());
+                    this._Clase = new ObservableCollection<Clase>(dBContext.Clases.Include(c => c.Instructor).Include(c => c.Carrera).Include(c => c.Salon).Include(c => c.Horario).ToList());
                 }
                 return this._Clase;    
             } 

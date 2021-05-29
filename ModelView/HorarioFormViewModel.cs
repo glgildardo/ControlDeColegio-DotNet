@@ -17,9 +17,9 @@ namespace ControlDeColegio.ModelView
 
         public Horario HorarioForm {get; set;}
 
-        public DateTime HorarioInicio {get; set;}
+        public TimeSpan  HorarioInicio {get; set;}
 
-        public DateTime HorarioFinal {get; set;}
+        public TimeSpan HorarioFinal {get; set;}
 
         public HorarioFormViewModel(HorarioViewModel HorarioViewModel)
         {

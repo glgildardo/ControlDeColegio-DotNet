@@ -22,5 +22,10 @@ namespace ControlDeColegio.Models
             this.Descripcion = Descripcion;
             this.NombreSalon = NombreSalon;            
         }
+
+        public override string ToString()
+        {
+            return $"{this.NombreSalon}";
+        }
     }
 }

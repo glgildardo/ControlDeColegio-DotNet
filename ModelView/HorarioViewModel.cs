@@ -22,10 +22,6 @@ namespace ControlDeColegio.ModelView
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.Horario = new ObservableCollection<Horario>();
-            this.Horario.Add(new Horario("1", new DateTime(2020, 5, 1, 8, 30, 52), new DateTime(2019, 5, 1, 8, 30, 52)));
-            this.Horario.Add(new Horario("2", new DateTime(2020, 5, 1, 8, 30, 52), new DateTime(2019, 5, 1, 8, 30, 52)));
-            this.Horario.Add(new Horario("3", new DateTime(2020, 5, 1, 8, 30, 52), new DateTime(2019, 5, 1, 8, 30, 52)));
         }
 
         public void agregarElemento(Horario nuevo){

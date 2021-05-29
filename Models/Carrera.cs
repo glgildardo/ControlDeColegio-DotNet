@@ -18,5 +18,10 @@ namespace ControlDeColegio.Models
             this.CarreraId = CarreraId;
             this.Nombre = Nombre;
         }
+
+        public override string ToString()
+        {
+            return this.Nombre;
+        }
     }
 }

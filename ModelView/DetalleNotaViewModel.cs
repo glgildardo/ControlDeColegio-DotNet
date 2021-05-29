@@ -14,18 +14,15 @@ namespace ControlDeColegio.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
         public IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<DetalleNota> DetalleNota {get; set;}
         public DetalleNota Seleccionado {get; set;}
         public DetalleNotaViewModel Instancia {get; set;}
+        public ObservableCollection<DetalleNota> _DetalleNota {get; set;}
+        public ObservableCollection<DetalleNota> DetalleNota {get; set;}
         
         public DetalleNotaViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.DetalleNota = new ObservableCollection<DetalleNota>();
-            this.DetalleNota.Add(new DetalleNota("1", "1", "2021001", 9));
-            this.DetalleNota.Add(new DetalleNota("2", "2", "2021002", 10));
-            this.DetalleNota.Add(new DetalleNota("3", "3", "2021003", 8));
         }
 
         public void agregarElemento(DetalleNota nuevo)

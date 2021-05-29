@@ -30,5 +30,9 @@ namespace ControlDeColegio.Models
             this.Nombres = Nombres;
             this.Telefono = Telefono;
         }
+        public override string ToString()
+        {
+            return $"{this.Apellidos} {this.Nombres}";
+        }
     }
 }
