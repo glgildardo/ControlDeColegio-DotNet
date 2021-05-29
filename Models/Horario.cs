@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ControlDeColegio.Models
 {
@@ -7,6 +8,7 @@ namespace ControlDeColegio.Models
         public string HorarioId {get; set;}
         public DateTime HorarioFinal {get; set;}
         public DateTime HorarioInicio {get;set;}
+        public virtual List<Clase> Clases {get; set;}
 
         public Horario()
         {

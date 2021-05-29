@@ -10,10 +10,10 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Dell\Documents\Cursos\NET\ControlDeColegio\App.xaml
-27-209574661
+27-626840152
 
-741833217419
-222-1609808746
+74-190966948
+222-739137507
 MainWindow.xaml;Views\AlumnoFormView.xaml;Views\AlumnoView.xaml;Views\AsignacionAlumnoFormView.xaml;Views\AsignacionAlumnoView.xaml;Views\CarreraFormView.xaml;Views\CarreraView.xaml;Views\ClaseFormView.xaml;Views\ClaseView.xaml;Views\DetalleActividadFormView.xaml;Views\DetalleActividadView.xaml;Views\DetalleNotaFormView.xaml;Views\DetalleNotaView.xaml;Views\HorarioFormView.xaml;Views\HorarioView.xaml;Views\InstructorFormView.xaml;Views\InstructorView.xaml;Views\ModuloFormView.xaml;Views\ModuloView.xaml;Views\RolFormView.xaml;Views\RolView.xaml;Views\SalonFormView.xaml;Views\SalonView.xaml;Views\SeminarioFormView.xaml;Views\SeminarioView.xaml;Views\UsuariosView.xaml;Views\UsuarioView.xaml;
 
 False

@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -13,18 +15,26 @@ namespace ControlDeColegio.ModelView
         public event EventHandler CanExecuteChanged;
         public event PropertyChangedEventHandler PropertyChanged;
         public IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<DetalleActividad> DetalleActividad {get; set;}
+        public KalumDBContext dBContext = new KalumDBContext();
         public DetalleActividadViewModel Instancia {get; set;}
         public DetalleActividad Seleccionado {get; set;}
+        public ObservableCollection<DetalleActividad> _DetalleActividad {get; set;}
+        public ObservableCollection<DetalleActividad> DetalleActividad {
+            get{
+                if(this._DetalleActividad == null) {
+                    this._DetalleActividad = new ObservableCollection<DetalleActividad>(dBContext.DetalleActividades.ToList());
+                }
+                return this._DetalleActividad;
+            } 
+            set{
+                this.DetalleActividad = value;
+            }
+        }
 
         public DetalleActividadViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.DetalleActividad = new ObservableCollection<DetalleActividad>();
-            this.DetalleActividad.Add(new DetalleActividad("1", "1", "Pintar una escuela", 10, new DateTime (2021, 01, 28), new DateTime(2021, 05, 28), new DateTime(2021, 06, 28), 'A'));
-            this.DetalleActividad.Add(new DetalleActividad("2", "2", "Reparar un Jardin", 10, new DateTime (2021, 01, 28), new DateTime(2021, 05, 28), new DateTime(2021, 06, 28), 'B'));
-            this.DetalleActividad.Add(new DetalleActividad("1", "1", "Capacitaciones de nutrición", 10, new DateTime (2021, 01, 28), new DateTime(2021, 05, 28), new DateTime(2021, 06, 28), 'A'));
         }
         
         public void agregarElemento(DetalleActividad nuevo)
@@ -67,6 +77,8 @@ namespace ControlDeColegio.ModelView
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
+                        this.dBContext.Remove(this.Seleccionado);
+                        this.dBContext.SaveChanges();
                         this.DetalleActividad.Remove(Seleccionado);
                     }
                 }

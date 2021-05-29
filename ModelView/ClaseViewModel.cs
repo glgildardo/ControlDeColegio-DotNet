@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -14,23 +16,27 @@ namespace ControlDeColegio.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
         public IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<Clase> Clase {get; set;}
+        public KalumDBContext dBContext = new KalumDBContext();
         public Clase Seleccionado {get; set;}
         public ClaseViewModel Instancia {get; set;}
+        public ObservableCollection<Clase> _Clase {get; set;}
+        public ObservableCollection<Clase> Clase 
+        {
+            get{
+                if(this._Clase == null) {
+                    this._Clase = new ObservableCollection<Clase>(dBContext.Clases.ToList());
+                }
+                return this._Clase;    
+            } 
+            set{
+                this.Clase = value;
+            }
+        }
         
         public ClaseViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.Clase = new ObservableCollection<Clase>();
-            this.Clase.Add(new Clase("1", 1, 10, 5, "Clase de primaria", "1", "Matutino", "1", "1"));
-            this.Clase.Add(new Clase("2", 2, 15, 8, "Clase de segundaria", "2", "Vespertino", "2", "2"));
-            this.Clase.Add(new Clase("3", 3, 10, 6, "Clase de Kinder", "3", "Matutino", "3", "3"));
-        }
-
-        public void agregarElemento(Clase nuevo)
-        {
-            this.Clase.Add(nuevo);
         }
 
         public void NotificarCambio(string property)
@@ -39,6 +45,10 @@ namespace ControlDeColegio.ModelView
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
+        }
+        public void agregarElemento(Clase nuevo)
+        {
+            this.Clase.Add(nuevo);
         }
         public bool CanExecute(object parameter)
         {
@@ -68,6 +78,8 @@ namespace ControlDeColegio.ModelView
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
+                        this.dBContext.Remove(this.Seleccionado);
+                        this.dBContext.SaveChanges();
                         this.Clase.Remove(Seleccionado);
                     }
                 }

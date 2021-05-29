@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ControlDeColegio.Models
 {
     public class Instructor
@@ -11,6 +13,8 @@ namespace ControlDeColegio.Models
         public string Foto {get; set;}
         public string Nombres {get; set;}
         public string Telefono {get; set;}
+        public virtual List<Clase> Clases {get; set;}
+
         public Instructor()
         {
             

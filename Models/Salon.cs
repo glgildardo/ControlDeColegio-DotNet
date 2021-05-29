@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ControlDeColegio.Models
 {
     public class Salon
@@ -7,6 +9,7 @@ namespace ControlDeColegio.Models
         public string Descripcion {get; set;}
         public string NombreSalon {get; set;}
 
+        public virtual List<Clase> Clases {get; set;}
         public Salon()
         {
             
