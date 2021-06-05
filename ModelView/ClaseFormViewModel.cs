@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using ControlDeColegio.Models;
 using ControlDeColegio.DataContext;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.ModelView
 {
@@ -19,10 +20,27 @@ namespace ControlDeColegio.ModelView
         public Clase ClaseForm {get; set;}
         public string Descripcion {get; set;}
         
+        public Carrera CarreraTecnicaSeleccionado {get; set;}
+        public Instructor InstructorSeleccionado {get; set;}
+        public Salon SalonSeleccionado {get; set;}
+        public Horario HorarioSeleccionado{get; set;}
         public ObservableCollection<Carrera> Carreras {get; set;}
         public ObservableCollection<Salon> Salones {get; set;}
         public ObservableCollection<Horario> Horarios {get; set;}
         public ObservableCollection<Instructor> Instructores {get; set;}
+        public IDialogCoordinator dialogCoordinator;
+        public string ValorDescripcion {get; set;}
+        public string ValorCiclo {get; set;}
+        public string ValorCupoMaximo {get; set;}
+        public string ValorCupoMinimo {get; set;}
+        public string Titulo {get; set;}
+
+
+        //VALORES PREDETERMINADOS DE LOS COMBO BOX
+        public string NombreDefinido {get; set;} = "Seleccionar";
+        public string HorarioDefinido {get; set;} = "Seleccionar";
+        public string SalondDefinido {get; set;} = "Seleccionar";
+        public string CarreraDefinida {get; set;} = "Seleccionar";
         public KalumDBContext dBContext = new KalumDBContext();
 
         public List<int> _CupoMinimo {get; set;}
@@ -81,9 +99,10 @@ namespace ControlDeColegio.ModelView
             }
         }
 
-        public ClaseFormViewModel(ClaseViewModel ClaseViewModel)
+        public ClaseFormViewModel(ClaseViewModel ClaseViewModel, IDialogCoordinator instance)
         {
             this.Instancia = this;
+            this.dialogCoordinator = instance;
             this.ClaseViewModel = ClaseViewModel;
             this.Carreras = new ObservableCollection<Carrera>(this.dBContext.Carreras.ToList());
             this.Instructores = new ObservableCollection<Instructor>(this.dBContext.Instructores.ToList());
@@ -92,15 +111,20 @@ namespace ControlDeColegio.ModelView
         
             if(this.ClaseViewModel.Seleccionado != null)
             {
+                Titulo = "Modificar Registro";
                 this.ClaseForm = new Clase();
-                // this.Ciclo = ClaseViewModel.Seleccionado.Ciclo;
-                // this.CupoMaximo = ClaseViewModel.Seleccionado.CupoMaximo;
-                // this.CupoMinimo = ClaseViewModel.Seleccionado.CupoMinimo;   
-                // this.Descripcion = ClaseViewModel.Seleccionado.Descripcion;
-                // this.CarreraId = ClaseViewModel.Seleccionado.CarreraId;
-                // this.HorarioId = ClaseViewModel.Seleccionado.HorarioId;
-                // this.InstructorId = ClaseViewModel.Seleccionado.InstructorId;
-                // this.SalonId = ClaseViewModel.Seleccionado.SalonId;                
+                this.ValorDescripcion = this.ClaseViewModel.Seleccionado.Descripcion;
+                this.ValorCiclo = this.ClaseViewModel.Seleccionado.Ciclo.ToString();
+                this.ValorCupoMinimo = this.ClaseViewModel.Seleccionado.CupoMinimo.ToString();
+                this.ValorCupoMaximo = this.ClaseViewModel.Seleccionado.CupoMaximo.ToString();
+                this.CarreraTecnicaSeleccionado = this.ClaseViewModel.Seleccionado.Carrera;
+                this.InstructorSeleccionado = this.ClaseViewModel.Seleccionado.Instructor;
+                this.HorarioSeleccionado = this.ClaseViewModel.Seleccionado.Horario;
+                this.SalonSeleccionado = this.ClaseViewModel.Seleccionado.Salon;
+                this.NombreDefinido = this.ClaseViewModel.Seleccionado.Instructor.Apellidos + " " + this.ClaseViewModel.Seleccionado.Instructor.Nombres;
+                this.HorarioDefinido = $"{this.ClaseViewModel.Seleccionado.Horario.HorarioInicio.ToString(@"hh\:mm")} - {this.ClaseViewModel.Seleccionado.Horario.HorarioFinal:hh\\:mm}";
+                this.SalondDefinido = this.ClaseViewModel.Seleccionado.Salon.NombreSalon;
+                this.CarreraDefinida = this.ClaseViewModel.Seleccionado.Carrera.Nombre;
             }
         }
         public bool CanExecute(object parameter)
@@ -108,14 +132,28 @@ namespace ControlDeColegio.ModelView
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             if(parameter is Window)
-            {
+            {                
                 if(this.ClaseViewModel.Seleccionado == null)
                 {
                     // Clase nuevo = new Clase("4", Ciclo, CupoMaximo, CupoMinimo, Descripcion, CarreraId, HorarioId, InstructorId, SalonId);
                     // this.ClaseViewModel.agregarElemento(nuevo);
+                    Clase nuevaClase = new Clase();
+                    nuevaClase.ClaseId = Guid.NewGuid().ToString();
+                    nuevaClase.Ciclo = Convert.ToInt16(ValorCiclo);
+                    nuevaClase.CupoMaximo = Convert.ToInt16(ValorCupoMaximo);
+                    nuevaClase.CupoMinimo = Convert.ToInt16(ValorCupoMinimo);
+                    nuevaClase.Descripcion = ValorDescripcion;
+                    nuevaClase.Carrera = CarreraTecnicaSeleccionado;
+                    nuevaClase.Horario =  HorarioSeleccionado;
+                    nuevaClase.Instructor = InstructorSeleccionado;
+                    nuevaClase.Salon = SalonSeleccionado;
+                    dBContext.Clases.Add(nuevaClase);
+                    dBContext.SaveChanges();
+                    this.ClaseViewModel.Clase.Add(nuevaClase);
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Clase", "Registro Almacenado");
                 }
                 else
                 {
@@ -127,9 +165,9 @@ namespace ControlDeColegio.ModelView
                     // ClaseForm.HorarioId = this.HorarioId;
                     // ClaseForm.InstructorId = this.InstructorId;
                     // ClaseForm.SalonId = this.SalonId;;
-                    int posicion = ClaseViewModel.Clase.IndexOf(this.ClaseViewModel.Seleccionado);
-                    this.ClaseViewModel.Clase.RemoveAt(posicion);
-                    this.ClaseViewModel.Clase.Insert(posicion, ClaseForm);
+                //     int posicion = ClaseViewModel.Clase.IndexOf(this.ClaseViewModel.Seleccionado);
+                //     this.ClaseViewModel.Clase.RemoveAt(posicion);
+                //     this.ClaseViewModel.Clase.Insert(posicion, ClaseForm);
                 }
                 ((Window)parameter).Close();
             }

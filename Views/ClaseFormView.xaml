@@ -26,30 +26,30 @@
         </Grid.ColumnDefinitions>
         
         <Label Content = "Ciclo" Grid.Row = "0" Grid.Column = "0"/>
-        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "0" Grid.Column = "1" ItemsSource = "{Binding Ciclos}"/>
+        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "0" Grid.Column = "1" ItemsSource = "{Binding Ciclos}" SelectedValue="{Binding ValorCiclo}" Text="{Binding ValorCiclo}"/>
         
         <Label Content = "Cupo Máximo" Grid.Row = "1" Grid.Column = "0"/>
-        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "1" Grid.Column = "1" ItemsSource = "{Binding CupoMaximo}"/>
+        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "1" Grid.Column = "1" ItemsSource = "{Binding CupoMaximo}" SelectedValue="{Binding ValorCupoMaximo}" Text="{Binding ValorCupoMaximo}"/>
         
         <Label Content = "Cupo Mínimo" Grid.Row = "2" Grid.Column = "0"/>
-        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "2" Grid.Column = "1" ItemsSource = "{Binding CupoMinimo}"/>
+        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "2" Grid.Column = "1" ItemsSource = "{Binding CupoMinimo}" SelectedValue="{Binding ValorCupoMinimo}" Text="{Binding ValorCupoMinimo}"/>
         
         <Label Content = "Descripción" Grid.Row = "3" Grid.Column = "0"/>
-        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "3" Grid.Column = "1" Text = "{Binding Descripcion}"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "3" Grid.Column = "1" Text = "{Binding ValorDescripcion}"/>
         
         <Label Content = "Carrera" Grid.Row = "4" Grid.Column = "0"/>
-        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "4" Grid.Column = "1" ItemsSource = "{Binding Carreras}"/>
+        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "4" Grid.Column = "1" ItemsSource = "{Binding Carreras}" SelectedItem="{Binding CarreraTecnicaSeleccionado}" IsEditable="true" Text="{Binding CarreraDefinida}" IsReadOnly="true"/>
         
         <Label Content = "Horario" Grid.Row = "5" Grid.Column = "0"/>
-        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "5" Grid.Column = "1" ItemsSource = "{Binding Horarios}"/>
+        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "5" Grid.Column = "1" ItemsSource = "{Binding Horarios}" SelectedItem="{Binding HorarioSeleccionado}" IsEditable="true"  Text="{Binding HorarioDefinido}" IsReadOnly="true"/>
         
         <Label Content = "Instructor" Grid.Row = "6" Grid.Column = "0"/>
-        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "6" Grid.Column = "1" ItemsSource = "{Binding Instructores}"/>
+        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "6" Grid.Column = "1" ItemsSource = "{Binding Instructores}"  SelectedItem="{Binding InstructorSeleccionado}" IsEditable="true" Text="{Binding NombreDefinido}" IsReadOnly="true"/>
         
         <Label Content = "Salon" Grid.Row = "7" Grid.Column = "0"/>
-        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "7" Grid.Column = "1" ItemsSource = "{Binding Salones}"/>
+        <ComboBox Margin = "0, 2, 2, 2" Grid.Row = "7" Grid.Column = "1" ItemsSource = "{Binding Salones}" SelectedItem="{Binding SalonSeleccionado}" IsEditable="true"  Text="{Binding SalondDefinido}" IsReadOnly="true"/>
 
-        <StackPanel Margin = "2" Grid.Row = "7" Grid.ColumnSpan = "2" Orientation = "Vertical">
+        <StackPanel Margin = "2" Grid.Row = "8" Grid.ColumnSpan = "2" Orientation = "Vertical" >
             <Button Content="Guardar" Command = "{Binding Instancia}" CommandParameter ="{Binding ElementName = FrmClase}"/>
         </StackPanel>
     </Grid>
