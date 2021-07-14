@@ -8,6 +8,7 @@ using System.Windows.Input;
 using ControlDeColegio.Models;
 using ControlDeColegio.DataContext;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControlDeColegio.ModelView
 {
@@ -157,17 +158,23 @@ namespace ControlDeColegio.ModelView
                 }
                 else
                 {
-                    // ClaseForm.Ciclo = this.Ciclo;
-                    // ClaseForm.CupoMaximo = this.CupoMaximo;
-                    // ClaseForm.CupoMinimo = this.CupoMinimo;
-                    // ClaseForm.Descripcion = this.Descripcion;
-                    // ClaseForm.CarreraId = this.CarreraId;
-                    // ClaseForm.HorarioId = this.HorarioId;
-                    // ClaseForm.InstructorId = this.InstructorId;
-                    // ClaseForm.SalonId = this.SalonId;;
-                //     int posicion = ClaseViewModel.Clase.IndexOf(this.ClaseViewModel.Seleccionado);
-                //     this.ClaseViewModel.Clase.RemoveAt(posicion);
-                //     this.ClaseViewModel.Clase.Insert(posicion, ClaseForm);
+                    int posicion = this.ClaseViewModel.Clase.IndexOf(this.ClaseViewModel.Seleccionado);
+                    Clase temporal = new Clase();
+                    temporal.ClaseId = this.ClaseViewModel.Seleccionado.ClaseId;
+                    temporal.Descripcion = this.ValorDescripcion;
+                    temporal.Ciclo = Convert.ToInt16(this.ValorCiclo);
+                    temporal.CupoMaximo = Convert.ToInt16(this.ValorCupoMaximo);
+                    temporal.CupoMinimo = Convert.ToInt16(this.ValorCupoMinimo);
+                    temporal.CarreraId = this.CarreraTecnicaSeleccionado.CarreraId;
+                    temporal.InstructorId = this.InstructorSeleccionado.InstructorId;
+                    temporal.SalonId = this.SalonSeleccionado.SalonId;
+                    temporal.HorarioId = this.HorarioSeleccionado.HorarioId;
+                    this.dBContext.Entry(temporal).State = EntityState.Modified;
+                    this.dBContext.SaveChanges();
+                    this.ClaseViewModel.Clase.RemoveAt(posicion);
+                    this.ClaseViewModel.Clase.Insert(posicion, temporal);
+                    await this.dialogCoordinator.ShowMessageAsync(this,
+                         "Clases", "Registro actualizado");
                 }
                 ((Window)parameter).Close();
             }

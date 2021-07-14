@@ -19,7 +19,20 @@ namespace ControlDeColegio.ModelView
         public event EventHandler CanExecuteChanged;
         public IDialogCoordinator dialogCoordinator;
         public KalumDBContext dBContext = new KalumDBContext();
-        public Clase Seleccionado {get; set;}
+        
+        private Clase _Seleccionado;
+        public Clase Seleccionado {
+            get
+            {
+                return this._Seleccionado;
+            } 
+            set
+            {
+                this._Seleccionado = value;
+                NotificarCambio("Seleccionado");
+            }
+        }
+
         public ClaseViewModel Instancia {get; set;}
 
         public ObservableCollection<Clase> _Clase {get; set;}
@@ -62,6 +75,10 @@ namespace ControlDeColegio.ModelView
         {
             if(parameter.Equals("Nuevo"))
             {
+                if(this.Seleccionado != null) 
+                {
+                    this.Seleccionado = null;
+                }
                 this.Seleccionado = null;
                 ClaseFormView nuevoClase = new ClaseFormView(Instancia);
                 nuevoClase.Show();
@@ -81,9 +98,16 @@ namespace ControlDeColegio.ModelView
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
-                        this.dBContext.Remove(this.Seleccionado);
-                        this.dBContext.SaveChanges();
-                        this.Clase.Remove(Seleccionado);
+                        try
+                        {
+                            this.dBContext.Remove(this.Seleccionado);
+                            this.dBContext.SaveChanges();
+                            this.Clase.Remove(Seleccionado);
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Clases", "Registro eliminado");
+                        }catch(Exception e) {
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Clases", "Error al eliminar el registro");
+                        }
+                        
                     }
                 }
             }
