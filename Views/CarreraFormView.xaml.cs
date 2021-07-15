@@ -1,5 +1,6 @@
 using ControlDeColegio.ModelView;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.Views
 {
@@ -8,7 +9,7 @@ namespace ControlDeColegio.Views
         public CarreraFormView(CarreraViewModel CarreraViewMOdel)
         {
             InitializeComponent();
-            CarreraFormViewModel model = new CarreraFormViewModel(CarreraViewMOdel);
+            CarreraFormViewModel model = new CarreraFormViewModel(CarreraViewMOdel, DialogCoordinator.Instance);
             this.DataContext = model;            
         }
     }

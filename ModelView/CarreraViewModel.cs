@@ -16,12 +16,26 @@ namespace ControlDeColegio.ModelView
         public event EventHandler CanExecuteChanged;
         public IDialogCoordinator dialogCoordinator;
         public CarreraViewModel Instancia {get; set;}
-        public Carrera Seleccionado {get; set;}
+        public Carrera _Seleccionado {get; set;}
+        public Carrera Seleccionado 
+        {
+            get
+            {
+                return _Seleccionado;
+            }
+            set
+            {
+                this._Seleccionado = value;
+                NotificarCambio("Seleccionado");
+            }
+        }
         private KalumDBContext dBContext = new KalumDBContext();
         public ObservableCollection<Carrera> _Carrera {get; set;}
         public ObservableCollection<Carrera> Carrera {
-            get{
-                if(this._Carrera == null) {
+            get
+            {
+                if(this._Carrera == null) 
+                {
                     this._Carrera = new ObservableCollection<Carrera>(dBContext.Carreras.ToList());
                 }
                 return this._Carrera;
