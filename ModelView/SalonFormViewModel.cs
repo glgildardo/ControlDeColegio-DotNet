@@ -62,8 +62,8 @@ namespace ControlDeColegio.ModelView
                         var DescripcionParameter = new SqlParameter("@Descripcion", this.Descripcion);
                         var NombreSalonParameter = new SqlParameter("@NombreSalon", this.NombreSalon);
                         var Resultado = this.dbContext.Salones
-                        .FromSqlRaw("sp_registrar_salon @Capacidad, @Descripcion, @NombreSalon", CapacidadParameter, DescripcionParameter, NombreSalonParameter)
-                        .ToListAsync();
+                            .FromSqlRaw("sp_registrar_salon @Capacidad, @Descripcion, @NombreSalon", CapacidadParameter, DescripcionParameter, NombreSalonParameter)
+                            .ToListAsync();
                         foreach(Object registro in await Resultado)
                         {
                             this.SalonViewModel.Salon.Add((Salon)registro);
