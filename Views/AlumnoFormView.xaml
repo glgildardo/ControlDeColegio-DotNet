@@ -27,7 +27,7 @@
         <TextBox Margin = "0, 2, 2, 2" Grid.Row = "0" Grid.Column = "1" Text = "{Binding Carne}" IsReadOnly="true"/>
         
         <Label Content = "NoExpediente" Grid.Row = "1" Grid.Column = "0"/>
-        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "1" Grid.Column = "1" Text = "{Binding NoExpediente}"/>
+        <TextBox Margin = "0, 2, 2, 2" Grid.Row = "1" Grid.Column = "1" Text = "{Binding NoExpediente}" IsReadOnly="true"/>
         
         <Label Content = "Apellidos" Grid.Row = "2" Grid.Column = "0"/>
         <TextBox Margin = "0, 2, 2, 2" Grid.Row = "2" Grid.Column = "1" Text = "{Binding Apellidos}"/>
