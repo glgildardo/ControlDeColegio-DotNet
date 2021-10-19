@@ -1,6 +1,7 @@
 using System.Windows;
 using ControlDeColegio.ModelView;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ControlDeColegio.Views
 {
@@ -9,7 +10,7 @@ namespace ControlDeColegio.Views
         public HorarioFormView(HorarioViewModel HorarioViewModel)
         {
             InitializeComponent();
-            HorarioFormViewModel model = new HorarioFormViewModel(HorarioViewModel);
+            HorarioFormViewModel model = new HorarioFormViewModel(HorarioViewModel, DialogCoordinator.Instance);
             this.DataContext = model;
         }
     }

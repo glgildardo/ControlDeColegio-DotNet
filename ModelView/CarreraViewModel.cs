@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -13,18 +15,40 @@ namespace ControlDeColegio.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
         public IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<Carrera> Carrera {get; set;}
         public CarreraViewModel Instancia {get; set;}
-        public Carrera Seleccionado {get; set;}
+        public Carrera _Seleccionado {get; set;}
+        public Carrera Seleccionado 
+        {
+            get
+            {
+                return _Seleccionado;
+            }
+            set
+            {
+                this._Seleccionado = value;
+                NotificarCambio("Seleccionado");
+            }
+        }
+        private KalumDBContext dBContext = new KalumDBContext();
+        public ObservableCollection<Carrera> _Carrera {get; set;}
+        public ObservableCollection<Carrera> Carrera {
+            get
+            {
+                if(this._Carrera == null) 
+                {
+                    this._Carrera = new ObservableCollection<Carrera>(dBContext.Carreras.ToList());
+                }
+                return this._Carrera;
+            } 
+            set{
+                this.Carrera = value;
+            }
+        }
         
         public CarreraViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.Carrera = new ObservableCollection<Carrera>();
-            this.Carrera.Add(new Carrera("1", "Dibujo"));
-            this.Carrera.Add(new Carrera("2", "Informatica"));
-            this.Carrera.Add(new Carrera("3", "Mecanica"));
         }
         public bool CanExecute(object parameter)
         {
@@ -65,6 +89,8 @@ namespace ControlDeColegio.ModelView
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
+                        this.dBContext.Remove(this.Seleccionado);
+                        this.dBContext.SaveChanges();
                         this.Carrera.Remove(Seleccionado);
                     }
                 }

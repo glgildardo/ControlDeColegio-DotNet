@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -13,7 +15,21 @@ namespace ControlDeColegio.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
         public IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<AsignacionAlumno> AsignacionAlumno {get; set;}
+        public KalumDBContext dBContext = new KalumDBContext();
+        public ObservableCollection<AsignacionAlumno> _AsignacionAlumno {get; set;}
+        public ObservableCollection<AsignacionAlumno> AsignacionAlumno {
+            get
+            {
+                if(this._AsignacionAlumno == null) {
+                    this._AsignacionAlumno = new ObservableCollection<AsignacionAlumno>(dBContext.AsignacionAlumnos.ToList());
+                }
+                return this._AsignacionAlumno;
+            } 
+            set
+            {
+                this.AsignacionAlumno = value;
+            }
+        }
         public AsignacionAlumno Seleccionado {get; set;}
         public AsignacionAlumnoViewModel Instancia {get; set;}
         
@@ -21,15 +37,6 @@ namespace ControlDeColegio.ModelView
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.AsignacionAlumno = new ObservableCollection<AsignacionAlumno>();
-            this.AsignacionAlumno.Add(new AsignacionAlumno("1", "2021001", "1", new DateTime(2021, 04, 15)));
-            this.AsignacionAlumno.Add(new AsignacionAlumno("2", "2021002", "2", new DateTime(2021, 04, 14)));
-            this.AsignacionAlumno.Add(new AsignacionAlumno("3", "2021003", "3", new DateTime(2021, 04, 13)));
-        }
-
-        public void agregarElemento(AsignacionAlumno nuevo)
-        {
-            this.AsignacionAlumno.Add(nuevo);
         }
 
         public void NotificarCambio(string property)
@@ -39,6 +46,11 @@ namespace ControlDeColegio.ModelView
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
+        public void agregarElemento(AsignacionAlumno nuevo)
+        {
+            this.AsignacionAlumno.Add(nuevo);
+        }
+
         public bool CanExecute(object parameter)
         {
             return true;

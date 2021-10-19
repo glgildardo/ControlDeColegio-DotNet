@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 
 namespace ControlDeColegio.ModelView
@@ -13,9 +14,11 @@ namespace ControlDeColegio.ModelView
         public AsignacionAlumnoFormViewModel Instancia {get; set;}
         public AsignacionAlumnoViewModel AsignacionAlumnoViewModel {get; set;}
         public AsignacionAlumno AsignacionAlumnoForm {get; set;}
+        private KalumDBContext dBContext;
         public string Carne {get; set;}
         public string ClaseId {get; set;}
         public DateTime FechaAsignacion {get; set;}
+        public string Titulo {get; set;}
         
         public AsignacionAlumnoFormViewModel(AsignacionAlumnoViewModel AsignacionAlumnoViewModel)
         {
@@ -24,6 +27,7 @@ namespace ControlDeColegio.ModelView
             if(this.AsignacionAlumnoViewModel.Seleccionado != null)
             {
                 this.AsignacionAlumnoForm = new AsignacionAlumno();
+                this.Titulo = "Modificar asignacion de alumno";
                 this.Carne = AsignacionAlumnoViewModel.Seleccionado.Carne;
                 this.ClaseId = AsignacionAlumnoViewModel.Seleccionado.ClaseId;
                 this.FechaAsignacion = AsignacionAlumnoViewModel.Seleccionado.FechaAsignacion;

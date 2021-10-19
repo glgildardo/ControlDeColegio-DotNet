@@ -8,7 +8,7 @@
         xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         Dialog:DialogParticipation.Register="{Binding}"
         mc:Ignorable="d"
-        Title="Clase" Height="500" Width="1200" WindowStartupLocation = "CenterScreen">
+        Title="Clase"  WindowStartupLocation = "CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -25,13 +25,46 @@
                                 Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}"
                                 Width = "100" />
                 <DataGridTextColumn Binding = "{Binding Ciclo}" Header = "Ciclo" IsReadOnly = "true"/>
-                <DataGridTextColumn Binding = "{Binding CupoMaximo}" Header = "Cupo máximo" IsReadOnly = "true"/>
-                <DataGridTextColumn Binding = "{Binding CupoMinimo}" Header = "Cupo mínimo" IsReadOnly = "true"/>
                 <DataGridTextColumn Binding = "{Binding Descripcion}" Header = "Descripcion" IsReadOnly = "true"/>
-                <DataGridTextColumn Binding = "{Binding CarreraId}" Header = "Carrera" IsReadOnly = "true"/>
-                <DataGridTextColumn Binding = "{Binding HorarioId}" Header = "Horario" IsReadOnly = "true"/>
-                <DataGridTextColumn Binding = "{Binding InstructorId}" Header = "Instructor" IsReadOnly = "true"/>
-                <DataGridTextColumn Binding = "{Binding SalonId}" Header = "Salon" IsReadOnly = "true"/>
+                <DataGridTemplateColumn Header="Cupo">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding CupoMinimo}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding CupoMaximo}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Horario">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Horario.HorarioInicio, StringFormat=hh\\:mm}" />
+                                <TextBlock Text=" - " />
+                                <TextBlock Text="{Binding Horario.HorarioFinal, StringFormat=hh\\:mm}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header = "Instructor">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Instructor.Apellidos}" />
+                                <TextBlock Text=" " />
+                                <TextBlock Text="{Binding Instructor.Nombres}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Binding = "{Binding Carrera.Nombre}" Header = "Carrera" IsReadOnly = "true"/>
+                <DataGridTextColumn Binding = "{Binding Salon.NombreSalon}" Header = "Salon" IsReadOnly = "true"/>
+                
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row = "1" Grid.Column = "0" Orientation = "Horizontal">

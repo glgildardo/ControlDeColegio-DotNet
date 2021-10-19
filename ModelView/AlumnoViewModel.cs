@@ -36,7 +36,20 @@ namespace ControlDeColegio.ModelView
             }
         }
         public AlumnoViewModel Instancia {get; set;}
-        public Alumno Seleccionado {get; set;}
+
+        private Alumno _Seleccionado;
+        public Alumno Seleccionado 
+        {
+            get
+            {
+                return _Seleccionado;
+            }   
+            set
+            {
+                this._Seleccionado = value;
+                NotificarCambio("Seleccionado");
+            } 
+        }
 
         public AlumnoViewModel(IDialogCoordinator instance)
         {
