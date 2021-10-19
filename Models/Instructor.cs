@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ControlDeColegio.Models
 {
     public class Instructor
@@ -11,6 +13,8 @@ namespace ControlDeColegio.Models
         public string Foto {get; set;}
         public string Nombres {get; set;}
         public string Telefono {get; set;}
+        public virtual List<Clase> Clases {get; set;}
+
         public Instructor()
         {
             
@@ -25,6 +29,10 @@ namespace ControlDeColegio.Models
             this.Foto = Foto;
             this.Nombres = Nombres;
             this.Telefono = Telefono;
+        }
+        public override string ToString()
+        {
+            return $"{this.Apellidos} {this.Nombres}";
         }
     }
 }

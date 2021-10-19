@@ -12,6 +12,11 @@ namespace ControlDeColegio.Models
         public string InstructorId {get; set;}
         public string SalonId {get; set;}
 
+        public virtual Carrera Carrera {get; set;}
+        public virtual Salon Salon {get; set;}
+        public virtual Horario Horario {get; set;}
+        public virtual Instructor Instructor {get; set;}
+        
         public Clase()
         {
             

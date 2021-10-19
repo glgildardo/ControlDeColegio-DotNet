@@ -1,7 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -10,22 +12,46 @@ namespace ControlDeColegio.ModelView
 {
     public class HorarioViewModel : INotifyPropertyChanged, ICommand
     {
-        public ObservableCollection<Horario> Horario {get; set;}
         private IDialogCoordinator dialogCoordinator;
-
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
+        public KalumDBContext dbContext = new KalumDBContext();
         public HorarioViewModel Instancia {get; set;}
-        public Horario Seleccionado {get; set;}
+        public ObservableCollection<Horario> _Horario {get; set;}        
+        public ObservableCollection<Horario> Horario
+        {
+            get
+            {
+                if(this._Horario == null)
+                {
+                    this._Horario = new ObservableCollection<Horario>(dbContext.Horarios.ToList());
+                }
+                return this._Horario;
+            } 
+            set
+            {
+                this.Horario = value;
+            }
+        }
+
+        public Horario _Seleccionado {get; set;}
+        public Horario Seleccionado 
+        {
+            get
+            {
+                return _Seleccionado;
+            } 
+            set
+            {
+                this._Seleccionado = value;
+                NotificarCambio("Seleccionado");
+            }
+        }
 
         public HorarioViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.Horario = new ObservableCollection<Horario>();
-            this.Horario.Add(new Horario("1", new DateTime(2020, 5, 1, 8, 30, 52), new DateTime(2019, 5, 1, 8, 30, 52)));
-            this.Horario.Add(new Horario("2", new DateTime(2020, 5, 1, 8, 30, 52), new DateTime(2019, 5, 1, 8, 30, 52)));
-            this.Horario.Add(new Horario("3", new DateTime(2020, 5, 1, 8, 30, 52), new DateTime(2019, 5, 1, 8, 30, 52)));
         }
 
         public void agregarElemento(Horario nuevo){
@@ -56,7 +82,9 @@ namespace ControlDeColegio.ModelView
             {
                 if(this.Seleccionado == null)
                 {
-                    await this.dialogCoordinator.ShowMessageAsync(this, "Horario", "Debe seleccionar un elemento", MessageDialogStyle.Affirmative);
+                    await this.dialogCoordinator.ShowMessageAsync(this,
+                        "Horario", "Debe seleccionar un elemento",
+                        MessageDialogStyle.Affirmative);
                 }
                 else
                 {
@@ -65,6 +93,8 @@ namespace ControlDeColegio.ModelView
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
+                        this.dbContext.Remove(this.Seleccionado);
+                        this.dbContext.SaveChanges();
                         this.Horario.Remove(Seleccionado);
                     }
                 }

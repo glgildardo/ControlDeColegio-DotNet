@@ -1,7 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
+using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
 using ControlDeColegio.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -13,18 +15,42 @@ namespace ControlDeColegio.ModelView
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
         private IDialogCoordinator dialogCoordinator;
-        public ObservableCollection<Salon> Salon {get; set;}        
+        public KalumDBContext dBContext = new KalumDBContext();
+        public ObservableCollection<Salon> _Salon {get; set;}        
+        public ObservableCollection<Salon> Salon 
+        {
+            get
+            {
+                if(this._Salon == null)
+                {
+                    this._Salon = new ObservableCollection<Salon>(dBContext.Salones.ToList());
+                }
+                return this._Salon;    
+            } 
+            set
+            {
+                this.Salon = value;
+            }
+        }        
         public SalonViewModel Instancia {get; set;}
-        public Salon Seleccionado {get; set;}
+        public Salon _Seleccionado {get; set;}
+        public Salon Seleccionado 
+        {
+            get
+            {
+                return _Seleccionado;
+            } 
+            set
+            {
+                this._Seleccionado = value;
+                NotificarCambio("Seleccionado");
+            }
+        }
 
         public SalonViewModel(IDialogCoordinator instance)
         {
             this.Instancia = this;
             this.dialogCoordinator = instance;
-            this.Salon = new ObservableCollection<Salon>();
-            this.Salon.Add(new Salon("1", 5, "Salon de 5to primaria", "5to A"));
-            this.Salon.Add(new Salon("1", 6, "Salon de 5to primaria", "5to B"));
-            this.Salon.Add(new Salon("1", 8, "Salon de 5to primaria", "5to C"));
         }
 
         public void NotificarCambio(string property)
@@ -55,7 +81,9 @@ namespace ControlDeColegio.ModelView
             {
                 if(this.Seleccionado == null)
                 {
-                    await this.dialogCoordinator.ShowMessageAsync(this, "Salon", "Debe seleccionar un Salon", MessageDialogStyle.Affirmative);
+                    await this.dialogCoordinator.ShowMessageAsync(this,
+                        "Salon", "Debe seleccionar un Salon",
+                         MessageDialogStyle.Affirmative);
                 }
                 else 
                 {
@@ -64,6 +92,8 @@ namespace ControlDeColegio.ModelView
                         MessageDialogStyle.AffirmativeAndNegative);
                     if(respuesta == MessageDialogResult.Affirmative)
                     {
+                        this.dBContext.Remove(this.Seleccionado);
+                        this.dBContext.SaveChanges();
                         this.Salon.Remove(Seleccionado);
                     }
                 }

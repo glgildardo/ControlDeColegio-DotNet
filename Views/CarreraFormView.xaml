@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:ControlDeColegio"
+        Dialog:DialogParticipation.Register="{Binding}"
         mc:Ignorable="d"
-        Title="Formulario de Carrera" Height="100" Width="350" WindowStartupLocation = "CenterScreen" Name="FrmCarrera">
+        Title="{Binding Titulo}" Height="100" Width="350" WindowStartupLocation = "CenterScreen" Name="FrmCarrera">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height = "30"/>

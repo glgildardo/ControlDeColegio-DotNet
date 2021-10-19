@@ -1,19 +1,27 @@
+using System.Collections.Generic;
+
 namespace ControlDeColegio.Models
 {
     public class Carrera
     {
-        public string CodigoCarrera {get; set;}
+        public string CarreraId {get; set;}
         public string Nombre {get; set;}
+        public virtual List<Clase> Clases {get; set;}
 
         public Carrera()
         {
             
         }
 
-        public Carrera(string CodigoCarrera, string Nombre)
+        public Carrera(string CarreraId, string Nombre)
         {
-            this.CodigoCarrera = CodigoCarrera;
+            this.CarreraId = CarreraId;
             this.Nombre = Nombre;
+        }
+
+        public override string ToString()
+        {
+            return this.Nombre;
         }
     }
 }

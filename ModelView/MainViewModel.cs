@@ -49,40 +49,16 @@ namespace ControlDeColegio.ModelView
                 SalonView ventanaSalon = new SalonView();
                 ventanaSalon.ShowDialog();
             }
-            else if(parametro.Equals("Instructor"))
-            {
-                InstructorView ventanaInstructor = new InstructorView();
-                ventanaInstructor.ShowDialog();
-            }
+            
             else if(parametro.Equals("Carrera"))
             {
                 CarreraView ventanaCarrera = new CarreraView();
                 ventanaCarrera.ShowDialog();
             }
-            else if(parametro.Equals("Modulo"))
-            {
-                ModuloView ventanaModulo = new ModuloView();
-                ventanaModulo.ShowDialog();
-            }
-            else if(parametro.Equals("Seminario"))
-            {
-                SeminarioView ventanaSeminario = new SeminarioView();
-                ventanaSeminario.ShowDialog();
-            }
-            else if(parametro.Equals("DetalleActividad"))
-            {
-                DetalleActividadView ventanaDetalleActividad = new DetalleActividadView();
-                ventanaDetalleActividad.ShowDialog();
-            }
             else if(parametro.Equals("AsignacionAlumno"))
             {
                 AsignacionAlumnoView ventanaAsignacionAlumno = new AsignacionAlumnoView();
                 ventanaAsignacionAlumno.ShowDialog();
-            }
-            else if(parametro.Equals("DetalleNota"))
-            {
-                DetalleNotaView ventanaDetalleNota = new DetalleNotaView();
-                ventanaDetalleNota.ShowDialog();
             }
             else if(parametro.Equals("Clase"))
             {
