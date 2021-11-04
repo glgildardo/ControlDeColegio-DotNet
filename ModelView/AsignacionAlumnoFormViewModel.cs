@@ -1,9 +1,12 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using ControlDeColegio.DataContext;
 using ControlDeColegio.Models;
+using MahApps.Metro.Controls.Dialogs;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControlDeColegio.ModelView
 {
@@ -15,6 +18,7 @@ namespace ControlDeColegio.ModelView
         public AsignacionAlumnoViewModel AsignacionAlumnoViewModel {get; set;}
         public AsignacionAlumno AsignacionAlumnoForm {get; set;}
         private KalumDBContext dBContext;
+        public IDialogCoordinator dialogCoordinator;
         public string Carne {get; set;}
         public string ClaseId {get; set;}
         public DateTime FechaAsignacion {get; set;}
@@ -38,7 +42,7 @@ namespace ControlDeColegio.ModelView
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             if(parameter is Window)
             {
@@ -53,8 +57,12 @@ namespace ControlDeColegio.ModelView
                     AsignacionAlumnoForm.ClaseId = this.ClaseId;
                     AsignacionAlumnoForm.FechaAsignacion = this.FechaAsignacion;
                     int posicion = AsignacionAlumnoViewModel.AsignacionAlumno.IndexOf(this.AsignacionAlumnoViewModel.Seleccionado);
+                    this.dBContext.Entry(AsignacionAlumnoForm).State = EntityState.Modified;
+                    this.dBContext.SaveChanges();
                     this.AsignacionAlumnoViewModel.AsignacionAlumno.RemoveAt(posicion);
                     this.AsignacionAlumnoViewModel.AsignacionAlumno.Insert(posicion, AsignacionAlumnoForm);
+                    await this.dialogCoordinator.ShowMessageAsync(this,
+                            "Alumno", "Registro actualizado");
                 }
                 ((Window)parameter).Close();
             }

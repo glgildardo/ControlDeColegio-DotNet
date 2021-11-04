@@ -8,6 +8,7 @@ using ControlDeColegio.Models;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Data.SqlClient;
 using System.Linq;
+using System.Diagnostics;
 
 namespace ControlDeColegio.ModelView
 {
@@ -85,9 +86,14 @@ namespace ControlDeColegio.ModelView
                         AlumnoForm.Apellidos = this.Apellidos;
                         AlumnoForm.Nombres = this.Nombres;
                         AlumnoForm.Email = this.Email;
+                        Console.WriteLine(AlumnoForm);
+
                         this.dbContext.Entry(AlumnoForm).State  = EntityState.Modified;
+                        this.dbContext.SaveChanges();
                         this.AlumnoViewModel.Alumno.RemoveAt(posicion);
                         this.AlumnoViewModel.Alumno.Insert(posicion, AlumnoForm);
+                        await this.DialogCoordinator.ShowMessageAsync(this,
+                            "Alumno", "Registro actualizado");
                     }
                     // this.dbContext.SaveChanges();
                     ((Window)parameter).Close();
